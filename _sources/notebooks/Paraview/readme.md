@@ -1,4 +1,4 @@
-# Paraview Tutorial
+# Paraview
 
 Reference:
 1. [Paraview Documentation](https://docs.paraview.org/en/v5.8/UsersGuide/index.html)

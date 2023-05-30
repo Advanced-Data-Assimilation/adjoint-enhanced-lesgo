@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>LESGO configuration &#8212; Adjoint-enhanced LESGO</title>
+    <title>8.4. LESGO configuration &#8212; Adjoint-enhanced LESGO</title>
   
   
   
@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -61,11 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "dd": "\\mathrm{d}", "ii": "\\mathrm{i}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lesgo/LESGO_configuration';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="8.5. LESGO Tutorial" href="LESGO_tutorial.html" />
+    <link rel="prev" title="8.2. Lesgo Tutorial" href="lesgo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -131,7 +134,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../../project_tracking.html">
+<a class="navbar-brand logo" href="../main.html">
   
   
   
@@ -151,12 +154,52 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../project_tracking.html">
-                    Feb 06
+                <a class="reference internal" href="../main.html">
+                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
                 </a>
             </li>
         </ul>
-        
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/FFT.html">6. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/MPI.html">MPI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">7. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="velocity_solver.html">9. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pressure_solver.html">10. Pressure Solvers</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scalar/scalar_solver.html">11. Scalar Solvers</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="scalar/scalar_fvm.html">11.4. Scalar solver based on Finite Volume Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scalar/scalar_fvm_implicit.html">11.5. Implicit Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scalar/fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests/scalar_validation_ex1.html">11.7. Validation case for scalar</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Paraview/readme.html">Paraview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../project_tracking.html">Project Tracking</a></li>
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -301,13 +344,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain">Domain</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">Model parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time">Time</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solver-parameters">Solver Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-parameters">Output Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#level-set">Level Set</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turbines">Turbines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain">8.4.1. Domain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">8.4.2. Model parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time">8.4.3. Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solver-parameters">8.4.4. Solver Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-parameters">8.4.5. Output Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#level-set">8.4.6. Level Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turbines">8.4.7. Turbines</a></li>
 </ul>
             </nav>
         </div>
@@ -320,10 +363,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lesgo-configuration">
-<h1>LESGO configuration<a class="headerlink" href="#lesgo-configuration" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8.4. </span>LESGO configuration<a class="headerlink" href="#lesgo-configuration" title="Permalink to this heading">#</a></h1>
 <p>This file is created to describe how to set up the configuration file properly for specific problem.</p>
 <section id="domain">
-<h2>Domain<a class="headerlink" href="#domain" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.1. </span>Domain<a class="headerlink" href="#domain" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! Domain parameters
 DOMAIN {
 
@@ -379,7 +422,7 @@ DOMAIN {
 <em>uniform_spacing</em> : uniform grid spacing. -&gt; Ly, Lz depend on Lx and Nx.</p>
 </section>
 <section id="model-parameters">
-<h2>Model parameters<a class="headerlink" href="#model-parameters" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.2. </span>Model parameters<a class="headerlink" href="#model-parameters" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! Model parameters
 MODEL {
 
@@ -447,7 +490,7 @@ MODEL {
 <em>nu_molec</em> : Dimensional molecular viscosity</p>
 </section>
 <section id="time">
-<h2>Time<a class="headerlink" href="#time" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.3. </span>Time<a class="headerlink" href="#time" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 TIME {
 
@@ -482,7 +525,7 @@ TIME {
 <em>cumulative_time</em> : cumulative time across multiple simulations <span style='color:red'> ???</span></p>
 </section>
 <section id="solver-parameters">
-<h2>Solver Parameters<a class="headerlink" href="#solver-parameters" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.4. </span>Solver Parameters<a class="headerlink" href="#solver-parameters" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! Solver parameters
 FLOW_COND {
 
@@ -559,7 +602,7 @@ FLOW_COND {
 <p><strong>SCALAR SPONGE LAYER</strong></p>
 </section>
 <section id="output-parameters">
-<h2>Output Parameters<a class="headerlink" href="#output-parameters" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.5. </span>Output Parameters<a class="headerlink" href="#output-parameters" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>! Output parameters
 OUTPUT {
 
@@ -646,7 +689,7 @@ OUTPUT {
 </div>
 </section>
 <section id="level-set">
-<h2>Level Set<a class="headerlink" href="#level-set" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.6. </span>Level Set<a class="headerlink" href="#level-set" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>LEVEL_SET {
 
   ! Compute global CA (normalized force time area) based on inflow velocity
@@ -697,7 +740,7 @@ OUTPUT {
 </div>
 </section>
 <section id="turbines">
-<h2>Turbines<a class="headerlink" href="#turbines" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.4.7. </span>Turbines<a class="headerlink" href="#turbines" title="Permalink to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>TURBINES {
 
   ! Number of turbines in the x- and y-directions
@@ -806,6 +849,24 @@ OUTPUT {
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lesgo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8.2. </span>Lesgo Tutorial</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="LESGO_tutorial.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.5. </span>LESGO Tutorial</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -824,13 +885,13 @@ OUTPUT {
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain">Domain</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">Model parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time">Time</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solver-parameters">Solver Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-parameters">Output Parameters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#level-set">Level Set</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turbines">Turbines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain">8.4.1. Domain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parameters">8.4.2. Model parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time">8.4.3. Time</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solver-parameters">8.4.4. Solver Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-parameters">8.4.5. Output Parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#level-set">8.4.6. Level Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turbines">8.4.7. Turbines</a></li>
 </ul>
   </nav></div>
 

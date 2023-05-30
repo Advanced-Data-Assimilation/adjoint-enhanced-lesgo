@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>11.5. Implicit Method &#8212; Adjoint-enhanced LESGO</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "dd": "\\mathrm{d}", "ii": "\\mathrm{i}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lesgo/scalar/scalar_fvm_implicit';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="11.6. Fourier Transform in Finite Volume Method with modified wave number" href="fvm_fft.html" />
+    <link rel="prev" title="11.4. Scalar solver based on Finite Volume Method" href="scalar_fvm.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../main.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/source_location.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/source_location.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../main.html">
+                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFT.html">6. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/MPI.html">MPI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">7. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../velocity_solver.html">9. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pressure_solver.html">10. Pressure Solvers</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="scalar_solver.html">11. Scalar Solvers</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="scalar_fvm.html">11.4. Scalar solver based on Finite Volume Method</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">11.5. Implicit Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tests/scalar_validation_ex1.html">11.7. Validation case for scalar</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Paraview/readme.html">Paraview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../project_tracking.html">Project Tracking</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/lesgo/scalar/scalar_fvm_implicit.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Implicit Method</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">11.5.1. Validation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="implicit-method">
+<h1><span class="section-number">11.5. </span>Implicit Method<a class="headerlink" href="#implicit-method" title="Permalink to this heading">#</a></h1>
+<p>The discretization equation of advection-diffusion equation based on finite volume method in Eq. <a class="reference internal" href="scalar_fvm.html#equation-eq-wang2019-fvm">(11.1)</a> <span id="id1">[<a class="reference internal" href="../velocity_solver.html#id15" title="Qi Wang, Yosuke Hasegawa, and Tamer A. Zaki. Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow. Journal of Fluid Mechanics, 870:316–352, July 2019. doi:10.1017/jfm.2019.241.">Wang <em>et al.</em>, 2019</a>]</span> is not very easy to satisfy the boundary condition in fourier space, so we include only <span class="math notranslate nohighlight">\(T^{n+1}\)</span> on the LHS instead of <span class="math notranslate nohighlight">\(\delta c\)</span>,</p>
+<div class="math notranslate nohighlight" id="equation-eq-scalar-implicit-fvm-governing">
+<span class="eqno">(11.2)<a class="headerlink" href="#equation-eq-scalar-implicit-fvm-governing" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+    \frac{T^{n+1}}{\Delta t} 
+    - \frac{1}{2}\underbrace{\frac{1}{V}\left[\frac{1}{Pe}\iint_S (\boldsymbol{n} \cdot \nabla T^{n+1}) \mathrm{d}S\right]}_{{D}_{1}\mathbf{T}^{n+1}}
+    = &amp; \frac{1}{\Delta t}c^n - \frac{1}{2} \left( 
+        3\underbrace{\frac{1}{V}\left[\iint_S (\boldsymbol{u}\cdot\boldsymbol{n}T) \mathrm{d}S \right]^n}_{\mathbf{F}^n\mathbf{T}^n} 
+        - \underbrace{\frac{1}{V}\left[\iint_S (\boldsymbol{u}\cdot\boldsymbol{n}T) \mathrm{d}S \right]^{n-1} }_{\mathbf{F}^{n-1}\mathbf{T}^{n-1}}
+        \right) \\
+        &amp; + \frac{1}{2}\underbrace{\frac{1}{V}\left[\frac{1}{Pe} \iint_S (\boldsymbol{n}\cdot\nabla T) \mathrm{d}S\right]^n}_{\mathbf{D}_{2}\mathbf{T}^n}
+        + \underbrace{\frac{1}{V}\left[\int_V \phi \mathrm{d}V\right]^n}_{\phi^n}
+\end{align}
+\end{split}\]</div>
+<p>in which <span class="math notranslate nohighlight">\({D}_{1}\)</span> is the diffusion operator based on Fourier method with modified wave number of finite volume method in x and y direction and finite volume in z direction, <span class="math notranslate nohighlight">\({D}_{2}\)</span> is the diffusion operator based on finite volume method. Take Eq.<a class="reference internal" href="#equation-eq-scalar-implicit-fvm-governing">(11.2)</a> into Fourier space, we have</p>
+<div class="math notranslate nohighlight" id="equation-eq-scalar-fvm-implicit-fourier">
+<span class="eqno">(11.3)<a class="headerlink" href="#equation-eq-scalar-fvm-implicit-fourier" title="Permalink to this equation">#</a></span>\[
+\begin{equation}
+a_{(i,j,k)}\widehat{T}^{n+1}_{(i, j, k-1)}+ b_{(i,j,k)}\delta\widehat{T}^{n+1}_{(i, j, k)} + c_{(i,j,k)}\widehat{T}_{(i, j, k+1)} = \widehat{R}_{(i,j,k)},
+\end{equation}
+\]</div>
+<p>in which,</p>
+<div class="math notranslate nohighlight" id="equation-eq-scalar-fvm-implicit-matrix-component">
+<span class="eqno">(11.4)<a class="headerlink" href="#equation-eq-scalar-fvm-implicit-matrix-component" title="Permalink to this equation">#</a></span>\[\begin{split}
+\begin{align}
+a_{(i, j, k)} &amp;=\frac{1}{\mathrm{d}\xi_{k}\mathrm{d}\xi_{kk}},\\
+b_{(i, j, k)} &amp;=\frac{1}{\Delta t} - \frac{1}{2Pe}\left(-\kappa_1^2x_i^2 - \kappa_2^2y_j^2 + \frac{1}{\mathrm{d}\xi_{k}(\mathrm{d}\xi_{kk}\mathrm{d}\xi_{kk+1})}\right),\\
+c_{(i, j, k)} &amp; = \frac{1}{\mathrm{d}\xi_{k}\mathrm{d}\xi_{kk+1}}.
+\end{align}
+\end{split}\]</div>
+<p>Don’t need to worry about the aliasing error since the advection term is discretized in explicit way and there is no non-linear term on the LHS.</p>
+<div class="proof definition admonition" id="definition:modified_wavenumber_fvm">
+<p class="admonition-title"><span class="caption-number">Definition 11.1 </span> (<strong>Modified Wavenumber</strong>)</p>
+<section class="definition-content" id="proof-content">
+<p>For the finite volume method, we have the corresponding modified wave number as</p>
+<div class="math notranslate nohighlight">
+\[
+\kappa^* = 2 \frac{|\sin{\frac{1}{2}\kappa \Delta x}|}{\Delta x}
+\]</div>
+<p>in which <span class="math notranslate nohighlight">\(\kappa\)</span> is the wave number for continuous Fourier transform (Details in <a class="reference internal" href="../../background/FFT.html#wavenumber-dft"><span class="std std-ref">here</span></a>).</p>
+</section>
+</div><div class="admonition-boundaries admonition">
+<p class="admonition-title">Boundaries</p>
+<p>Eq.<a class="reference internal" href="#equation-eq-scalar-fvm-implicit-fourier">(11.3)</a> need special care on the lower boundary and top boundary.</p>
+<p><strong>Lower boundary condition</strong></p>
+<p>At the lower boundary (<span class="math notranslate nohighlight">\(k=0\)</span>), we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{Dirichlet BC:} &amp; \quad T_{kk=1} = T_{lbc} \quad \Rightarrow \quad \widehat{T_0} + \widehat{T_1} = \mathcal{F}\left(2T_{lbc}\right),\\
+\text{Neumann BC:} &amp; \quad T_0 = T_1 - (\frac{\partial T}{\partial z})_{lbc}\dd \xi_{kk=1}\quad \Rightarrow \quad  -\widehat{T_0} + \widehat{T_1} = \mathcal{F}\left(\left(\frac{\partial T}{\partial z}\right)_{lbc} \dd \xi_{kk=1}\right)
+\end{align}
+\end{split}\]</div>
+<p><strong>Upper boundary condition</strong>
+At the upper boundary (<span class="math notranslate nohighlight">\(k=N_z\)</span>), we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+\text{Dirichlet BC:} &amp; \quad T_{kk=N_z} = T_{ubc} \quad \Rightarrow \quad \widehat{T_{N_z-1}} + \widehat{T_{N_z}} = \mathcal{F}\left(2T_{ubc}\right),\\
+\text{Neumann BC:} &amp; \quad T_{N_z} = T_{N_z-1} + (\frac{\partial T}{\partial z})_{ubc}\dd \xi_{kk=N_z}\quad \Rightarrow \quad -\widehat{T_{N_z-1}} + \widehat{T_{N_z}} = \mathcal{F}\left(\left(\frac{\partial T}{\partial z}\right)_{ubc} \dd \xi_{kk=N_z}\right)
+\end{align}
+\end{split}\]</div>
+</div>
+<p>For the zero wave number, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{T}_{(k_i=0, k_j=0, k)} = \frac{1}{N_x N_y} \sum_{i = 0}^{N_x-1} \sum_{j=0}^{N_y - 1} T_{(i, j, k)}  = \overline{T_{k}}.
+\]</div>
+<p>Thus, the governing equation of zero waver number is</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\overline{T_k}}{\Delta t} - \frac{1}{2 Pe} \frac{1}{\dd \xi_k}\left[ \frac{\overline{T_{k+1}}  - \overline{T_k}}{\dd \xi_{kk+1}} - \frac{\overline{T_k} - \overline{T_{k-1}}}{\dd \xi_{kk}}\right] = 
+\]</div>
+<section id="validation">
+<h2><span class="section-number">11.5.1. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/lesgo/scalar"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="scalar_fvm.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11.4. </span>Scalar solver based on Finite Volume Method</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="fvm_fft.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11.6. </span>Fourier Transform in Finite Volume Method with modified wave number</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">11.5.1. Validation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Zejian You
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

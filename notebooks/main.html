@@ -35,6 +35,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -61,11 +62,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "dd": "\\mathrm{d}", "ii": "\\mathrm{i}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/main';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. Adjoint Advection-Diffusion Equation" href="background/Adjoint_equation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -131,7 +133,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../project_tracking.html">
+<a class="navbar-brand logo" href="#">
   
   
   
@@ -150,13 +152,53 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../project_tracking.html">
-                    Feb 06
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
                 </a>
             </li>
         </ul>
-        
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background/FFT.html">6. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background/MPI.html">MPI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesgo/setup.html">7. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lesgo/velocity_solver.html">9. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesgo/pressure_solver.html">10. Pressure Solvers</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lesgo/scalar/scalar_solver.html">11. Scalar Solvers</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="lesgo/scalar/scalar_fvm.html">11.4. Scalar solver based on Finite Volume Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesgo/scalar/scalar_fvm_implicit.html">11.5. Implicit Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesgo/scalar/fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesgo/tests/scalar_validation_ex1.html">11.7. Validation case for scalar</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Paraview/readme.html">Paraview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../project_tracking.html">Project Tracking</a></li>
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -386,6 +428,16 @@ $<span class="math notranslate nohighlight">\(
 </table>
 <p>Stability criterion for the mesh griding and time step could be <span class="xref myst">here</span>.</p>
 </section>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -419,6 +471,15 @@ $<span class="math notranslate nohighlight">\(
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="right-next"
+       href="background/Adjoint_equation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Adjoint Advection-Diffusion Equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>

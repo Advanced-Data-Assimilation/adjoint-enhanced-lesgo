@@ -25,7 +25,7 @@ $$
     y^{n+1} \approx y^n + \frac{3}{2}\Delta t f(t^n, y^n) - \frac{1}{2} \Delta t f(t^{n-1}, y^{n-1})
 \end{equation}
 $$
-## Tri-diagonal Matrix 
+
 
 ## Jacobian
 Reference

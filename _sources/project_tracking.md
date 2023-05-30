@@ -1,3 +1,5 @@
+# Project Tracking
+
 #### Feb 06
 - *Summary:*
     1. 
@@ -32,3 +34,15 @@
 
 #### March 6, 2023
 1. [ ] Run forward and backward simulation with same parabolic velocity field and compare the result
+
+#### May 29, 2023
+* *Summary*
+  1. [ ] Tri-diagonal matrix solver, what is the last step?
+  1. [x] Check the zero wave number solution of scalar.
+  1. [ ] pressure solver on the boundary?
+  1. [ ] oscillation occur again?
+* *Target*
+  1. [ ] Debug Tecplot
+  1. [ ] Fermi memory 
+  1. [ ] implicit
+  1. [ ] Validation

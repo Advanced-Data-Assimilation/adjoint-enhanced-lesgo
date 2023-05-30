@@ -1,7 +1,5 @@
-# Fast Fourier Transform 
-## Reference 
-1. [De-aliasing in Fast Fourier Transform](https://math.jhu.edu/~feilu/notes/DealiasingFFT.pdf)
-2. 
+# FFTW package
+
 
 ## Discrete Fourier Transform (DFT) and FFT
 
@@ -9,14 +7,19 @@
 ### Fourier Transform (FT)
 
 ### Discrete Fourier Transform (DFT)
-Given sequential data $\{X_j\}_{j=0}^{N-1}$ of length $N$ at time index $j$, we could convert the time-domain discrete sequence into frequency-domain discrete spectrum:
+Given sequential data $\{X_j\}_{j=0}^{N-1}$ of length $N$ at time index $j$, we could convert the time-domain discrete sequence into frequency-domain discrete spectrum by **discrete Fourier transform (DFT)**:
 
+$$
+x_k = \sum_{j=0}^{N-1} X_je^{-2\pi ikj/N}, \quad 0\le k\le N-1
+$$
 
-### Modified Wavenumber
-**Reference**
-1. [Compact Scheme](https://en.wikipedia.org/wiki/Compact_finite_difference)
-1. [Modified Wave Number](https://www.nas.nasa.gov/assets/pdf/ams/2018/introtocfd/Intro2CFD_Lecture2_Lecture3_Pulliam_Chap3_Modk.pdf)
+The vector $X$ can be recovered from $x_k$ by **inverse discrete Fourier transform(IDFT)**,
 
+$$
+X_j = \frac{1}{N} \sum_{k=0}^{N-1} x_k e^{2\pi ikj/N}, \quad 0 \le j \le N-1
+$$
+
+## 2-Dimensional DFTs of real data 
 
 
 ## FFTW
@@ -108,3 +111,6 @@ lh_big = nx2 / 2 + 1
 ld_big = 2 * lh_big
 ```
 
+## Reference 
+1. [De-aliasing in Fast Fourier Transform](https://math.jhu.edu/~feilu/notes/DealiasingFFT.pdf)
+2. 
