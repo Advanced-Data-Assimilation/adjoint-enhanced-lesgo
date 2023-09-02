@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="MPI Tutorial" href="MPI.html" />
-    <link rel="prev" title="&lt;no title&gt;" href="numpy.html" />
+    <link rel="prev" title="6. Fast Fourier Transform" href="FFT.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -134,7 +134,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../../README.html">
+<a class="navbar-brand logo" href="../main.html">
   
   
   
@@ -154,21 +154,42 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../README.html">
-                    Adjoint-enahnced LESGO
+                <a class="reference internal" href="../main.html">
+                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO solver</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../lesgo/setup.html">1. Setup</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../lesgo/velocity_solver.html">3. Velocity Solvers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lesgo/pressure_solver.html">4. Pressure Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Test Cases</span></p>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subgrid-scale_model.html">4. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FFT.html">6. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MPI.html">MPI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../cases/LST/Readme.html">5. Linear Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesgo/setup.html">7. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../lesgo/velocity_solver.html">9. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesgo/pressure_solver.html">10. Pressure Solvers</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../lesgo/scalar/scalar_solver.html">11. Scalar Solvers</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../lesgo/scalar/scalar_fvm.html">11.4. Scalar solver based on Finite Volume Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesgo/scalar/scalar_fvm_implicit.html">11.5. Implicit Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesgo/scalar/fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lesgo/tests/scalar_validation_ex1.html">11.7. Validation case for scalar</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
 <ul class="nav bd-sidenav">
@@ -177,23 +198,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../project_tracking.html">Project Tracking</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Adjoint_equation.html">6. Adjoint Advection-Diffusion Equation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="numerical_methods/numerical_methods.html">7. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="numerical_methods/Stability_Criterion.html">7.4. Stability Criterion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="numerical_methods/matrix.html">7.5. Tri-diagonal Matrix</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Steepest_Descent.html">8. Method of The Steepest Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="subgrid-scale_model.html">9. Subgrid-scale model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="FFT.html">10. Fast Fourier Transform</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">FFTW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="MPI.html">MPI</a></li>
 </ul>
 
     </div>
@@ -235,53 +239,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI/issues/new?title=Issue%20on%20page%20%2Fnotebooks/background/FFTW.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -444,29 +401,29 @@ X_j = \frac{1}{N} \sum_{k=0}^{N-1} x_k e^{2\pi ikj/N}, \quad 0 \le j \le N-1
 <section id="to-big-a-a-big">
 <h3>to_big(a, a_big)<a class="headerlink" href="#to-big-a-a-big" title="Permalink to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">!*******************************************************************************</span>
-<span class="k">subroutine </span><span class="n">to_big</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">a_big</span><span class="p">)</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">to_big</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">a_big</span><span class="p">)</span>
 <span class="c">!*******************************************************************************</span>
-<span class="k">use </span><span class="n">fft</span><span class="w"></span>
-<span class="k">use </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">lbz</span><span class="p">,</span><span class="w"> </span><span class="n">nx</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="p">,</span><span class="w"> </span><span class="n">nz</span><span class="w"></span>
+<span class="k">use </span><span class="n">fft</span>
+<span class="k">use </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">lbz</span><span class="p">,</span><span class="w"> </span><span class="n">nx</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="p">,</span><span class="w"> </span><span class="n">nz</span>
 
-<span class="kt">real</span><span class="p">(</span><span class="n">rprec</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">ld</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="p">,</span><span class="w"> </span><span class="n">lbz</span><span class="p">:</span><span class="n">nz</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w">  </span><span class="n">a</span><span class="w"></span>
-<span class="kt">real</span><span class="p">(</span><span class="n">rprec</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">ld_big</span><span class="p">,</span><span class="w"> </span><span class="n">ny2</span><span class="p">,</span><span class="w"> </span><span class="n">lbz</span><span class="p">:</span><span class="n">nz</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a_big</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="n">rprec</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">ld</span><span class="p">,</span><span class="w"> </span><span class="n">ny</span><span class="p">,</span><span class="w"> </span><span class="n">lbz</span><span class="p">:</span><span class="n">nz</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w">  </span><span class="n">a</span>
+<span class="kt">real</span><span class="p">(</span><span class="n">rprec</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">ld_big</span><span class="p">,</span><span class="w"> </span><span class="n">ny2</span><span class="p">,</span><span class="w"> </span><span class="n">lbz</span><span class="p">:</span><span class="n">nz</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">inout</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a_big</span>
 
-<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">jz</span><span class="w"></span>
-<span class="kt">real</span><span class="p">(</span><span class="n">rprec</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">const</span><span class="w"></span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">jz</span>
+<span class="kt">real</span><span class="p">(</span><span class="n">rprec</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">const</span>
 
 <span class="c">! Set variables onto big domain for multiplication in physical space and</span>
 <span class="c">! dealiasing</span>
-<span class="w">    </span><span class="n">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1._rprec</span><span class="o">/</span><span class="p">(</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1._rprec</span><span class="o">/</span><span class="p">(</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">)</span>
 
-<span class="k">do </span><span class="n">jz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lbz</span><span class="p">,</span><span class="w"> </span><span class="n">nz</span><span class="w"></span>
-<span class="w">    </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">const</span><span class="o">*</span><span class="n">a</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">call </span><span class="n">dfftw_execute_dft_r2c</span><span class="p">(</span><span class="n">forw</span><span class="p">,</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span><span class="w"></span>
-<span class="w">        </span><span class="k">call </span><span class="n">padd</span><span class="p">(</span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span><span class="w"></span>
-<span class="w">        </span><span class="k">call </span><span class="n">dfftw_execute_dft_c2r</span><span class="p">(</span><span class="n">back_big</span><span class="p">,</span><span class="w"> </span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span><span class="w"></span>
+<span class="k">do </span><span class="n">jz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lbz</span><span class="p">,</span><span class="w"> </span><span class="n">nz</span>
+<span class="w">    </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">const</span><span class="o">*</span><span class="n">a</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">)</span>
+<span class="w">        </span><span class="k">call </span><span class="n">dfftw_execute_dft_r2c</span><span class="p">(</span><span class="n">forw</span><span class="p">,</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span>
+<span class="w">        </span><span class="k">call </span><span class="n">padd</span><span class="p">(</span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span>
+<span class="w">        </span><span class="k">call </span><span class="n">dfftw_execute_dft_c2r</span><span class="p">(</span><span class="n">back_big</span><span class="p">,</span><span class="w"> </span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span>
 <span class="k">end do</span>
 
-<span class="k">end subroutine </span><span class="n">to_big</span><span class="w"></span>
+<span class="k">end subroutine </span><span class="n">to_big</span>
 </pre></div>
 </div>
 </section>
@@ -480,35 +437,35 @@ X_j = \frac{1}{N} \sum_{k=0}^{N-1} x_k e^{2\pi ikj/N}, \quad 0 \le j \le N-1
 <section id="padd">
 <h4><em>padd</em><a class="headerlink" href="#padd" title="Permalink to this heading">#</a></h4>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">!*******************************************************************************</span>
-<span class="k">subroutine </span><span class="n">padd</span><span class="w"> </span><span class="p">(</span><span class="n">u_big</span><span class="p">,</span><span class="n">u</span><span class="p">)</span><span class="w"></span>
+<span class="k">subroutine </span><span class="n">padd</span><span class="w"> </span><span class="p">(</span><span class="n">u_big</span><span class="p">,</span><span class="n">u</span><span class="p">)</span>
 <span class="c">!*******************************************************************************</span>
 <span class="c">! puts arrays into larger, zero-padded arrays</span>
 <span class="c">! automatically zeroes the oddballs</span>
-<span class="k">use </span><span class="n">types</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">rprec</span><span class="w"></span>
-<span class="k">use </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ld</span><span class="p">,</span><span class="n">ld_big</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ny2</span><span class="w"></span>
-<span class="k">implicit none</span><span class="w"></span>
+<span class="k">use </span><span class="n">types</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">rprec</span>
+<span class="k">use </span><span class="n">param</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ld</span><span class="p">,</span><span class="n">ld_big</span><span class="p">,</span><span class="n">nx</span><span class="p">,</span><span class="n">ny</span><span class="p">,</span><span class="n">ny2</span>
+<span class="k">implicit none</span>
 
 <span class="c">!  u and u_big are interleaved as complex arrays</span>
-<span class="kt">real</span><span class="p">(</span><span class="n">rprec</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">ld</span><span class="p">,</span><span class="n">ny</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u</span><span class="w"></span>
-<span class="kt">real</span><span class="p">(</span><span class="n">rprec</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">ld_big</span><span class="p">,</span><span class="n">ny2</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u_big</span><span class="w"></span>
+<span class="kt">real</span><span class="p">(</span><span class="n">rprec</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">ld</span><span class="p">,</span><span class="n">ny</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u</span>
+<span class="kt">real</span><span class="p">(</span><span class="n">rprec</span><span class="p">),</span><span class="w"> </span><span class="k">dimension</span><span class="p">(</span><span class="n">ld_big</span><span class="p">,</span><span class="n">ny2</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">u_big</span>
 
-<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ny_h</span><span class="p">,</span><span class="w"> </span><span class="n">j_s</span><span class="p">,</span><span class="w"> </span><span class="n">j_big_s</span><span class="w"></span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">ny_h</span><span class="p">,</span><span class="w"> </span><span class="n">j_s</span><span class="p">,</span><span class="w"> </span><span class="n">j_big_s</span>
 
-<span class="n">ny_h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ny</span><span class="o">/</span><span class="mi">2</span><span class="w"></span>
+<span class="n">ny_h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ny</span><span class="o">/</span><span class="mi">2</span>
 
 <span class="c">! make sure the big array is zeroed!</span>
-<span class="n">u_big</span><span class="p">(:,:)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0._rprec</span><span class="w"></span>
+<span class="n">u_big</span><span class="p">(:,:)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0._rprec</span>
 
 <span class="c">! note: split access in an attempt to maintain locality</span>
-<span class="n">u_big</span><span class="p">(:</span><span class="n">nx</span><span class="p">,:</span><span class="n">ny_h</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">(:</span><span class="n">nx</span><span class="p">,:</span><span class="n">ny_h</span><span class="p">)</span><span class="w"></span>
+<span class="n">u_big</span><span class="p">(:</span><span class="n">nx</span><span class="p">,:</span><span class="n">ny_h</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">(:</span><span class="n">nx</span><span class="p">,:</span><span class="n">ny_h</span><span class="p">)</span>
 
 <span class="c">! Compute starting j locations for second transfer</span>
-<span class="n">j_s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ny_h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
-<span class="n">j_big_s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ny2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ny_h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="n">j_s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ny_h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">j_big_s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ny2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">ny_h</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span>
 
-<span class="n">u_big</span><span class="p">(:</span><span class="n">nx</span><span class="p">,</span><span class="n">j_big_s</span><span class="p">:</span><span class="n">ny2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">(:</span><span class="n">nx</span><span class="p">,</span><span class="n">j_s</span><span class="p">:</span><span class="n">ny</span><span class="p">)</span><span class="w"></span>
+<span class="n">u_big</span><span class="p">(:</span><span class="n">nx</span><span class="p">,</span><span class="n">j_big_s</span><span class="p">:</span><span class="n">ny2</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">(:</span><span class="n">nx</span><span class="p">,</span><span class="n">j_s</span><span class="p">:</span><span class="n">ny</span><span class="p">)</span>
 
-<span class="k">end subroutine </span><span class="n">padd</span><span class="w"></span>
+<span class="k">end subroutine </span><span class="n">padd</span>
 </pre></div>
 </div>
 </section>
@@ -517,15 +474,15 @@ X_j = \frac{1}{N} \sum_{k=0}^{N-1} x_k e^{2\pi ikj/N}, \quad 0 \le j \le N-1
 <section id="parameteres">
 <h2>Parameteres<a class="headerlink" href="#parameteres" title="Permalink to this heading">#</a></h2>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Grid size for dealiasing</span>
-<span class="n">nx2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
-<span class="n">ny2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="n">nx2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">ny2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
 </pre></div>
 </div>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Grid size for FFT&#39;s</span>
-<span class="n">lh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
-<span class="n">ld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lh</span><span class="w"></span>
-<span class="n">lh_big</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
-<span class="n">ld_big</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lh_big</span><span class="w"></span>
+<span class="n">lh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">ld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lh</span>
+<span class="n">lh_big</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">ld_big</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lh_big</span>
 </pre></div>
 </div>
 </section>
@@ -570,12 +527,12 @@ X_j = \frac{1}{N} \sum_{k=0}^{N-1} x_k e^{2\pi ikj/N}, \quad 0 \le j \le N-1
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="numpy.html"
+       href="FFT.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Fast Fourier Transform</p>
       </div>
     </a>
     <a class="right-next"

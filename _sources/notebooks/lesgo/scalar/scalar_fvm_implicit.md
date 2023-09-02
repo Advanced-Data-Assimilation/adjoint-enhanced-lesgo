@@ -27,7 +27,7 @@ in which,
 
 $$
 \begin{align}
-a_{(i, j, k)} &= \frac{1}{2 Pe} \frac{1}{\mathrm{d}\xi_{k}\mathrm{d}\xi_{kk}},\\
+a_{(i, j, k)} &=\frac{1}{\mathrm{d}\xi_{k}\mathrm{d}\xi_{kk}},\\
 b_{(i, j, k)} &=\frac{1}{\Delta t} - \frac{1}{2Pe}\left(-\kappa_1^2x_i^2 - \kappa_2^2y_j^2 + \frac{1}{\mathrm{d}\xi_{k}(\mathrm{d}\xi_{kk}\mathrm{d}\xi_{kk+1})}\right),\\
 c_{(i, j, k)} & = \frac{1}{\mathrm{d}\xi_{k}\mathrm{d}\xi_{kk+1}}.
 \end{align}
@@ -36,7 +36,7 @@ $$(eq:scalar_fvm_implicit_matrix_component)
 Don't need to worry about the aliasing error since the advection term is discretized in explicit way and there is no non-linear term on the LHS.
 
 
-```{admonition} **Modified Wavenumber**
+```{prf:definition} **Modified Wavenumber**
 :label: definition:modified_wavenumber_fvm
 
 For the finite volume method, we have the corresponding modified wave number as

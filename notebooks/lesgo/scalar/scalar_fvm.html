@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Scalar solver based on Finite Volume Method &#8212; Adjoint-enhanced LESGO</title>
+    <title>11.4. Scalar solver based on Finite Volume Method &#8212; Adjoint-enhanced LESGO</title>
   
   
   
@@ -67,6 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lesgo/scalar/scalar_fvm';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="11.5. Implicit Method" href="scalar_fvm_implicit.html" />
+    <link rel="prev" title="11. Scalar.f90" href="scalar_solver.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -132,7 +134,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../../../README.html">
+<a class="navbar-brand logo" href="../../main.html">
   
   
   
@@ -152,21 +154,42 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../../README.html">
-                    Adjoint-enahnced LESGO
+                <a class="reference internal" href="../../main.html">
+                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO solver</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../setup.html">1. Setup</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../velocity_solver.html">3. Velocity Solvers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pressure_solver.html">4. Pressure Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Test Cases</span></p>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFT.html">6. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../cases/LST/Readme.html">5. Linear Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/MPI.html">MPI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">7. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../velocity_solver.html">9. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pressure_solver.html">10. Pressure Solvers</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="scalar_solver.html">11. Scalar Solvers</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">11.4. Scalar solver based on Finite Volume Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scalar_fvm_implicit.html">11.5. Implicit Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tests/scalar_validation_ex1.html">11.7. Validation case for scalar</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
 <ul class="nav bd-sidenav">
@@ -175,23 +198,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../project_tracking.html">Project Tracking</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../background/Adjoint_equation.html">6. Adjoint Advection-Diffusion Equation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../background/numerical_methods/numerical_methods.html">7. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/Stability_Criterion.html">7.4. Stability Criterion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/matrix.html">7.5. Tri-diagonal Matrix</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/Steepest_Descent.html">8. Method of The Steepest Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/subgrid-scale_model.html">9. Subgrid-scale model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/FFT.html">10. Fast Fourier Transform</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../background/FFTW.html">FFTW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/MPI.html">MPI</a></li>
 </ul>
 
     </div>
@@ -233,53 +239,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lesgo/scalar/scalar_fvm.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -385,17 +344,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-s-cn">Fourier’s + CN</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#governing-equation">Governing equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-s-cn">11.4.1. Fourier’s + CN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#governing-equation">11.4.1.1. Governing equation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-derivative-should-be-calculated-on-the-y-0-boundary-may-5">How the derivative should be calculated on the y=0 boundary. - May 5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-condition-on-ddz-for-scalar-f90">Boundary Condition on ddz for scalar.f90.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">11.4.2. Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-derivative-should-be-calculated-on-the-y-0-boundary-may-5">11.4.2.1. How the derivative should be calculated on the y=0 boundary. - May 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-condition-on-ddz-for-scalar-f90">11.4.2.2. Boundary Condition on ddz for scalar.f90.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adi-cn-ab">ADI + CN + AB</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advective-term">Advective Term</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adi-cn-ab">11.4.3. ADI + CN + AB</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advective-term">11.4.3.1. Advective Term</a></li>
 </ul>
 </li>
 </ul>
@@ -410,13 +369,13 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="scalar-solver-based-on-finite-volume-method">
-<h1>Scalar solver based on Finite Volume Method<a class="headerlink" href="#scalar-solver-based-on-finite-volume-method" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">11.4. </span>Scalar solver based on Finite Volume Method<a class="headerlink" href="#scalar-solver-based-on-finite-volume-method" title="Permalink to this heading">#</a></h1>
 <p>This file is created to record how the finite volume method is applied into the scalar transport module.</p>
 <section id="fourier-s-cn">
-<h2>Fourier’s + CN<a class="headerlink" href="#fourier-s-cn" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.4.1. </span>Fourier’s + CN<a class="headerlink" href="#fourier-s-cn" title="Permalink to this heading">#</a></h2>
 <p>Fourier transform is applied on the LHS to obtain the derivative and construct the matrix of next time step.</p>
 <section id="governing-equation">
-<h3>Governing equation<a class="headerlink" href="#governing-equation" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.4.1.1. </span>Governing equation<a class="headerlink" href="#governing-equation" title="Permalink to this heading">#</a></h3>
 <p>The scalar transport is governed by</p>
 <div class="math notranslate nohighlight">
 \[
@@ -460,21 +419,21 @@ document.write(`
 </section>
 </section>
 <section id="problem">
-<h2>Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.4.2. </span>Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h2>
 <section id="how-the-derivative-should-be-calculated-on-the-y-0-boundary-may-5">
-<h3>How the derivative should be calculated on the y=0 boundary. - May 5<a class="headerlink" href="#how-the-derivative-should-be-calculated-on-the-y-0-boundary-may-5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.4.2.1. </span>How the derivative should be calculated on the y=0 boundary. - May 5<a class="headerlink" href="#how-the-derivative-should-be-calculated-on-the-y-0-boundary-may-5" title="Permalink to this heading">#</a></h3>
 <p><span style='color:red;font-weight:bold'>The index of x direction is ld = 1:nx+2 while index of y direction is 1:ny, which make the locations of extra two cell grids in x direction puzzled to me. Are cells with indices ld=0 and ld=nx+2 the ghost cells outside the domain box? Or they are those satisfy the periodic BC as f(ld=0)=f(ld=nx+1) and f(1)=f(nx+2)? Both case don’t show consistence with y direction… The only possible reason that I could imagine right now is that this is the way FFTW read in the data and do the FFT. In this case, I think we mind get into trouble to get the value or derivative at y=0 and y=Ly unless it is periodic in y direction. </span></p>
 <p><a class="reference external" href="https://www.fftw.org/fftw3_doc/Multi_002ddimensional-Transforms.html">4.8.6 Multi-dimensional Transforms</a></p>
 <p>Related to the FFTW. Check derivative.f90.</p>
 <p>Take f(ld=1:nx) is the data at the center in each cell for now.</p>
 </section>
 <section id="boundary-condition-on-ddz-for-scalar-f90">
-<h3>Boundary Condition on ddz for scalar.f90.<a class="headerlink" href="#boundary-condition-on-ddz-for-scalar-f90" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.4.2.2. </span>Boundary Condition on ddz for scalar.f90.<a class="headerlink" href="#boundary-condition-on-ddz-for-scalar-f90" title="Permalink to this heading">#</a></h3>
 <p>Upper BC and lower BC.</p>
 </section>
 </section>
 <section id="adi-cn-ab">
-<h2>ADI + CN + AB<a class="headerlink" href="#adi-cn-ab" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">11.4.3. </span>ADI + CN + AB<a class="headerlink" href="#adi-cn-ab" title="Permalink to this heading">#</a></h2>
 <p>The scalar transport is governed by
 $<span class="math notranslate nohighlight">\(
 \begin{equation}
@@ -483,7 +442,7 @@ $<span class="math notranslate nohighlight">\(
 \)</span>$</p>
 <p>Integration over a finite volume <span class="math notranslate nohighlight">\(V\)</span> with surrounding surface <span class="math notranslate nohighlight">\(S\)</span>, and adopting Adams-Bashforth and Crank-Nicolson for temporal discretization of the advection and diffusion terms respectively, we have</p>
 <div class="math notranslate nohighlight" id="equation-eq-wang2019-fvm">
-<span class="eqno">()<a class="headerlink" href="#equation-eq-wang2019-fvm" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(11.1)<a class="headerlink" href="#equation-eq-wang2019-fvm" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
     \frac{\delta c}{\Delta t} 
     - \frac{1}{2VPe}\iint_S (\boldsymbol{n} \cdot \nabla \delta c) \mathrm{d}S
@@ -516,7 +475,7 @@ $<span class="math notranslate nohighlight">\(
 \end{equation}
 \]</div>
 <section id="advective-term">
-<h3>Advective Term<a class="headerlink" href="#advective-term" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">11.4.3.1. </span>Advective Term<a class="headerlink" href="#advective-term" title="Permalink to this heading">#</a></h3>
 <p>For the advective term</p>
 <div class="math notranslate nohighlight">
 \[
@@ -535,28 +494,24 @@ A third-order upstream central scheme (HOUC3) algorithm is incorporated to inter
 \end{split}\]</div>
 <div class="docutils container" id="id1">
 <div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>Cho<span class="fn-bracket">]</span></span>
-<p><strong>missing journal in chorinConvergenceDiscreteApproximations1969</strong></p>
+<span class="label"><span class="fn-bracket">[</span>Cho69<span class="fn-bracket">]</span></span>
+<p>Alexandre Joel Chorin. On the convergence of discrete approximations to the Navier-Stokes equations. <em>Mathematics of Computation</em>, 23(106):341–353, 1969. <a class="reference external" href="https://doi.org/10.1090/S0025-5718-1969-0242393-5">doi:10.1090/S0025-5718-1969-0242393-5</a>.</p>
 </div>
-<div class="citation" id="id6" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>For<span class="fn-bracket">]</span></span>
-<p><strong>missing journal in fornbergGenerationFiniteDifference</strong></p>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KM89<span class="fn-bracket">]</span></span>
+<p>J. Kim and P. Moin. Transport of Passive Scalars in Turbulent Channel Flow. In Jean-Claude André, Jean Cousteix, Franz Durst, Brian E. Launder, Frank W. Schmidt, and James H. Whitelaw, editors, <em>Turbulent Shear Flows 6</em>, pages 85–96. Springer Berlin Heidelberg, Berlin, Heidelberg, 1989. <a class="reference external" href="https://doi.org/10.1007/978-3-642-73948-4_9">doi:10.1007/978-3-642-73948-4_9</a>.</p>
 </div>
-<div class="citation" id="id9" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>KM<span class="fn-bracket">]</span></span>
-<p><strong>missing year in kimTransportPassiveScalars1989</strong></p>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KK01<span class="fn-bracket">]</span></span>
+<p>Cetin Kiris and Dochan Kwak. Numerical solution of incompressible Navier–Stokes equations using a fractional-step approach. <em>Computers &amp; Fluids</em>, 30(7-8):829–851, September 2001. <a class="reference external" href="https://doi.org/10.1016/S0045-7930(01)00031-7">doi:10.1016/S0045-7930(01)00031-7</a>.</p>
 </div>
 <div class="citation" id="id12" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>LM<span class="fn-bracket">]</span></span>
-<p><strong>missing journal in leeDirectNumericalSimulation2015</strong></p>
+<span class="label"><span class="fn-bracket">[</span>Pop00<span class="fn-bracket">]</span></span>
+<p>Stephen B. Pope. <em>Turbulent Flows</em>. Cambridge University Press, first edition, August 2000. ISBN 978-0-521-59125-6 978-0-521-59886-6 978-0-511-84053-1. <a class="reference external" href="https://doi.org/10.1017/CBO9780511840531">doi:10.1017/CBO9780511840531</a>.</p>
 </div>
-<div class="citation" id="id16" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>Pop<span class="fn-bracket">]</span></span>
-<p><strong>missing year in popeTurbulentFlows2000a</strong></p>
-</div>
-<div class="citation" id="id17" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>WHZ<span class="fn-bracket">]</span></span>
-<p><strong>missing journal in wangSpatialReconstructionSteady2019a</strong></p>
+<div class="citation" id="id13" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WHZ19<span class="fn-bracket">]</span></span>
+<p>Qi Wang, Yosuke Hasegawa, and Tamer A. Zaki. Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow. <em>Journal of Fluid Mechanics</em>, 870:316–352, July 2019. <a class="reference external" href="https://doi.org/10.1017/jfm.2019.241">doi:10.1017/jfm.2019.241</a>.</p>
 </div>
 </div>
 </div>
@@ -595,6 +550,24 @@ A third-order upstream central scheme (HOUC3) algorithm is incorporated to inter
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="scalar_solver.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11. </span>Scalar.f90</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="scalar_fvm_implicit.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">11.5. </span>Implicit Method</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -613,17 +586,17 @@ A third-order upstream central scheme (HOUC3) algorithm is incorporated to inter
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-s-cn">Fourier’s + CN</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#governing-equation">Governing equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-s-cn">11.4.1. Fourier’s + CN</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#governing-equation">11.4.1.1. Governing equation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">Problem</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-derivative-should-be-calculated-on-the-y-0-boundary-may-5">How the derivative should be calculated on the y=0 boundary. - May 5</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-condition-on-ddz-for-scalar-f90">Boundary Condition on ddz for scalar.f90.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">11.4.2. Problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-the-derivative-should-be-calculated-on-the-y-0-boundary-may-5">11.4.2.1. How the derivative should be calculated on the y=0 boundary. - May 5</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-condition-on-ddz-for-scalar-f90">11.4.2.2. Boundary Condition on ddz for scalar.f90.</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adi-cn-ab">ADI + CN + AB</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advective-term">Advective Term</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adi-cn-ab">11.4.3. ADI + CN + AB</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advective-term">11.4.3.1. Advective Term</a></li>
 </ul>
 </li>
 </ul>

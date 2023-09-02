@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Paraview &#8212; Adjoint-enhanced LESGO</title>
+    <title>5. Uncertainty analysis &#8212; Adjoint-enhanced LESGO</title>
   
   
   
@@ -62,11 +62,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Paraview/readme';</script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "dd": "\\mathrm{d}", "ii": "\\mathrm{i}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/background/Uncertainty_analysis';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Project Tracking" href="../../project_tracking.html" />
-    <link rel="prev" title="11.7. Validation case for scalar" href="../lesgo/tests/scalar_validation_ex1.html" />
+    <link rel="next" title="6. Fast Fourier Transform" href="FFT.html" />
+    <link rel="prev" title="4. Subgrid-scale model" href="subgrid-scale_model.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -158,22 +160,22 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/FFT.html">6. Fast Fourier Transform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="subgrid-scale_model.html">4. Subgrid-scale model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5. Uncertainty analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FFT.html">6. Fast Fourier Transform</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../background/FFTW.html">FFTW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/MPI.html">MPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MPI.html">MPI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
 <ul class="nav bd-sidenav">
@@ -190,8 +192,8 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Paraview</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Paraview/readme.html">Paraview</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
 <ul class="nav bd-sidenav">
@@ -250,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/notebooks/Paraview/readme.md" target="_blank"
+      <li><a href="../../_sources/notebooks/background/Uncertainty_analysis.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -332,7 +334,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Paraview</h1>
+    <h1>Uncertainty analysis</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -342,8 +344,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fortran-code-to-generate-plt-file-for-paraview">Fortran code to generate plt file for Paraview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#animation">Animation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-background">5.1. Mathematical Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-components-analysis">5.2. Principal Components Analysis</a></li>
 </ul>
             </nav>
         </div>
@@ -355,24 +357,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="paraview">
-<h1>Paraview<a class="headerlink" href="#paraview" title="Permalink to this heading">#</a></h1>
-<p>Reference:</p>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://docs.paraview.org/en/v5.8/UsersGuide/index.html">Paraview Documentation</a></p></li>
-</ol>
-<section id="fortran-code-to-generate-plt-file-for-paraview">
-<h2>Fortran code to generate plt file for Paraview<a class="headerlink" href="#fortran-code-to-generate-plt-file-for-paraview" title="Permalink to this heading">#</a></h2>
-<p><strong>Functions</strong>
-in script read_restrt.f90</p>
-<p><strong>Output</strong>
-in script writeins3d.f90</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="uncertainty-analysis">
+<h1><span class="section-number">5. </span>Uncertainty analysis<a class="headerlink" href="#uncertainty-analysis" title="Permalink to this heading">#</a></h1>
+<p>This file is created to record how the uncertainty analysis works.</p>
+<section id="mathematical-background">
+<h2><span class="section-number">5.1. </span>Mathematical Background<a class="headerlink" href="#mathematical-background" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\log{c^\dag_i(\boldsymbol{x}_s)} \sim GP(\overline{\log{c^\dag_i}}, \mathbf{K}_i(\boldsymbol{x}_{s1}, \boldsymbol{x}_{s2})), \qquad i = 1, 2, \dots, N.
+\]</div>
 </section>
-<section id="animation">
-<h2>Animation<a class="headerlink" href="#animation" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://discourse.paraview.org/t/removing-background-when-exporting-png-eps-or-svg/880/2">transparent backgroud</a></p></li>
-</ul>
+<section id="principal-components-analysis">
+<h2><span class="section-number">5.2. </span>Principal Components Analysis<a class="headerlink" href="#principal-components-analysis" title="Permalink to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\log{c^\dag_i} \approx \overline{\log{c^\dag_i}} + \sum_{l}\alpha_l \phi_l(\boldsymbol{x})
+\]</div>
 </section>
 </section>
 
@@ -389,7 +389,7 @@ in script writeins3d.f90</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./notebooks/Paraview"
+            path: "./notebooks/background"
         },
         predefinedOutput: true
     }
@@ -408,20 +408,20 @@ in script writeins3d.f90</p>
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../lesgo/tests/scalar_validation_ex1.html"
+       href="subgrid-scale_model.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">11.7. </span>Validation case for scalar</p>
+        <p class="prev-next-title"><span class="section-number">4. </span>Subgrid-scale model</p>
       </div>
     </a>
     <a class="right-next"
-       href="../../project_tracking.html"
+       href="FFT.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Project Tracking</p>
+        <p class="prev-next-title"><span class="section-number">6. </span>Fast Fourier Transform</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -443,8 +443,8 @@ in script writeins3d.f90</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fortran-code-to-generate-plt-file-for-paraview">Fortran code to generate plt file for Paraview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#animation">Animation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-background">5.1. Mathematical Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#principal-components-analysis">5.2. Principal Components Analysis</a></li>
 </ul>
   </nav></div>
 

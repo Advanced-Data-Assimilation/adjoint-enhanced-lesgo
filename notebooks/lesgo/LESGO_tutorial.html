@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>2.5. LESGO Tutorial &#8212; Adjoint-enhanced LESGO</title>
+    <title>8.5. LESGO Tutorial &#8212; Adjoint-enhanced LESGO</title>
   
   
   
@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lesgo/LESGO_tutorial';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3. Velocity Solver based on CN method" href="velocity_solver.html" />
-    <link rel="prev" title="2.4. LESGO configuration" href="LESGO_configuration.html" />
+    <link rel="next" title="9. Velocity Solver based on CN method" href="velocity_solver.html" />
+    <link rel="prev" title="8.4. LESGO configuration" href="LESGO_configuration.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -134,7 +134,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../../README.html">
+<a class="navbar-brand logo" href="../main.html">
   
   
   
@@ -154,21 +154,42 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../README.html">
-                    Adjoint-enahnced LESGO
+                <a class="reference internal" href="../main.html">
+                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO solver</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="setup.html">1. Setup</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="velocity_solver.html">3. Velocity Solvers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pressure_solver.html">4. Pressure Solvers</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Test Cases</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../cases/LST/Readme.html">5. Linear Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/FFT.html">6. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/MPI.html">MPI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">7. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="velocity_solver.html">9. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pressure_solver.html">10. Pressure Solvers</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="scalar/scalar_solver.html">11. Scalar Solvers</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="scalar/scalar_fvm.html">11.4. Scalar solver based on Finite Volume Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scalar/scalar_fvm_implicit.html">11.5. Implicit Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scalar/fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tests/scalar_validation_ex1.html">11.7. Validation case for scalar</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
 <ul class="nav bd-sidenav">
@@ -177,23 +198,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../project_tracking.html">Project Tracking</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../background/Adjoint_equation.html">6. Adjoint Advection-Diffusion Equation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../background/numerical_methods/numerical_methods.html">7. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/Stability_Criterion.html">7.4. Stability Criterion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/matrix.html">7.5. Tri-diagonal Matrix</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../background/Steepest_Descent.html">8. Method of The Steepest Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/subgrid-scale_model.html">9. Subgrid-scale model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/FFT.html">10. Fast Fourier Transform</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../background/FFTW.html">FFTW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/MPI.html">MPI</a></li>
 </ul>
 
     </div>
@@ -235,53 +239,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lesgo/LESGO_tutorial.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -387,29 +344,29 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-environment-setup">2.5.1. A. Environment Setup</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-personal-pc">2.5.1.1. A.1. Personal PC</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-hpc-rockfish">2.5.1.2. A.2. HPC - Rockfish</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-environment-setup">8.5.1. A. Environment Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-personal-pc">8.5.1.1. A.1. Personal PC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-hpc-rockfish">8.5.1.2. A.2. HPC - Rockfish</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-nonlinear-forward-obs">2.5.2. B. Nonlinear Forward Obs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1-compile">2.5.2.1. B.1. Compile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run">2.5.2.2. Run</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process">2.5.2.3. Post-process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-nonlinear-forward-obs">8.5.2. B. Nonlinear Forward Obs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1-compile">8.5.2.1. B.1. Compile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run">8.5.2.2. Run</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process">8.5.2.3. Post-process</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-forward-scalar">2.5.3. Nonlinear Forward Scalar</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process-with-paraview">2.5.3.1. Post-process with Paraview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-forward-scalar">8.5.3. Nonlinear Forward Scalar</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process-with-paraview">8.5.3.1. Post-process with Paraview</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearized-forward">2.5.4. Linearized Forward</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjoint-of-the-linearized-forward">2.5.5. Adjoint of the Linearized Forward</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-the-code">2.5.6. Validation of the code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-adjoint">2.5.6.1. Validation of Adjoint</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-linearization">2.5.6.2. Validation of Linearization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearized-forward">8.5.4. Linearized Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjoint-of-the-linearized-forward">8.5.5. Adjoint of the Linearized Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-the-code">8.5.6. Validation of the code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-adjoint">8.5.6.1. Validation of Adjoint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-linearization">8.5.6.2. Validation of Linearization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-adjoint-non-linear-forward">2.5.7. Validation of Adjoint - non-linear Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-adjoint-non-linear-forward">8.5.7. Validation of Adjoint - non-linear Forward</a></li>
 </ul>
             </nav>
         </div>
@@ -422,12 +379,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lesgo-tutorial">
-<h1><span class="section-number">2.5. </span>LESGO Tutorial<a class="headerlink" href="#lesgo-tutorial" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">8.5. </span>LESGO Tutorial<a class="headerlink" href="#lesgo-tutorial" title="Permalink to this heading">#</a></h1>
 <p>This markdown note is a tutorial for LESGO. <a class="reference external" href="https://www.youtube.com/watch?v=LtJrqzgVDD4&amp;list=PLKLcs9yV72LxfFIAZh11Qk5eXIegGgEVB&amp;index=7">Video</a></p>
 <section id="a-environment-setup">
-<h2><span class="section-number">2.5.1. </span>A. Environment Setup<a class="headerlink" href="#a-environment-setup" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.1. </span>A. Environment Setup<a class="headerlink" href="#a-environment-setup" title="Permalink to this heading">#</a></h2>
 <section id="a-1-personal-pc">
-<h3><span class="section-number">2.5.1.1. </span>A.1. Personal PC<a class="headerlink" href="#a-1-personal-pc" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.1.1. </span>A.1. Personal PC<a class="headerlink" href="#a-1-personal-pc" title="Permalink to this heading">#</a></h3>
 <p>Required packages</p>
 <blockquote>
 <div><p>gcc-9.3.0/fftw-3.3.8</p>
@@ -438,36 +395,36 @@ document.write(`
 </ol>
 </section>
 <section id="a-2-hpc-rockfish">
-<h3><span class="section-number">2.5.1.2. </span>A.2. HPC - Rockfish<a class="headerlink" href="#a-2-hpc-rockfish" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.1.2. </span>A.2. HPC - Rockfish<a class="headerlink" href="#a-2-hpc-rockfish" title="Permalink to this heading">#</a></h3>
 <p>First, you need to connect to the HPC rockfish with the given username.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh username@login.rockfish.jhu.edu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>username@login.rockfish.jhu.edu
 </pre></div>
 </div>
 <p>BTW, you could also mount the folder on HPC on local machine.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs -p <span class="m">22</span> username@login.rockfish.jhu.edu:&lt;remote-dir&gt; -0 &lt;local-dir&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span><span class="w"> </span>username@login.rockfish.jhu.edu:&lt;remote-dir&gt;<span class="w"> </span>-0<span class="w"> </span>&lt;local-dir&gt;
 </pre></div>
 </div>
 <p>Once you login, you could easily set up the compile environment through the modules.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /data/apps/go.sh
-ml cmake
-ml intel/2020.1
-ml openmpi/3.1.6
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/data/apps/go.sh
+ml<span class="w"> </span>cmake
+ml<span class="w"> </span>intel/2020.1
+ml<span class="w"> </span>openmpi/3.1.6
 </pre></div>
 </div>
 <p>Or, you could create a bash file and run it everytime you want to compile LESGO or put it into the <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code> file so that it will be run every time you log in.</p>
 </section>
 </section>
 <section id="b-nonlinear-forward-obs">
-<h2><span class="section-number">2.5.2. </span>B. Nonlinear Forward Obs<a class="headerlink" href="#b-nonlinear-forward-obs" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.2. </span>B. Nonlinear Forward Obs<a class="headerlink" href="#b-nonlinear-forward-obs" title="Permalink to this heading">#</a></h2>
 <section id="b-1-compile">
-<h3><span class="section-number">2.5.2.1. </span>B.1. Compile<a class="headerlink" href="#b-1-compile" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.2.1. </span>B.1. Compile<a class="headerlink" href="#b-1-compile" title="Permalink to this heading">#</a></h3>
 <p><span style='color:red;font-weight:bold'> What OBS stand for? </span></p>
 <p>First, we need to go to the code folder</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$LESGO_DIR</span>/clean_version/lesgo_nonlinear_forward_obs
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$LESGO_DIR</span>/clean_version/lesgo_nonlinear_forward_obs
 </pre></div>
 </div>
 <p>You could setup the hsotname as well as select different features to turn on or off in <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code>. Before we compile the code, we need to remove previous built files. Usually we could do it simply through <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span></code>. However, this is not yet supported in current version so we simply remove the built folder.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm -rf bld/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span>bld/
 </pre></div>
 </div>
 <p>Then, we could build the new executable file with the new configuration.</p>
@@ -475,14 +432,14 @@ ml openmpi/3.1.6
 </pre></div>
 </div>
 <p>Once we got the built executable file <code class="docutils literal notranslate"><span class="pre">lesgo-mpi</span></code>, we could copy it to the folder where we run the simulations.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp lesgo-mpi &lt;run-dir&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp<span class="w"> </span>lesgo-mpi<span class="w"> </span>&lt;run-dir&gt;
 </pre></div>
 </div>
 </section>
 <section id="run">
-<h3><span class="section-number">2.5.2.2. </span>Run<a class="headerlink" href="#run" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.2.2. </span>Run<a class="headerlink" href="#run" title="Permalink to this heading">#</a></h3>
 <p>First, we need to go the the simulation folder.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;run-dir&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;run-dir&gt;
 </pre></div>
 </div>
 <p>Then, we need to specify the domain etc. parameters of the simulation to run the LESGO code in <code class="docutils literal notranslate"><span class="pre">&lt;run-dir&gt;/lesgo.conf</span></code>. Before we run the code, we need to check if the input files are also in the running folder.</p>
@@ -496,7 +453,7 @@ scripts_[fermi/rockfish].sh -&gt; launch script</p>
 </pre></div>
 </div>
 <p>Run LESGO with MPI.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch scripts_rockfish.sh
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>scripts_rockfish.sh
 </pre></div>
 </div>
 <p>Check the submitted sbatch job status.</p>
@@ -506,9 +463,9 @@ scripts_[fermi/rockfish].sh -&gt; launch script</p>
 <p><span style='color:red'> There are a lot of output file that is not mentioned in the tutorial video.</span></p>
 </section>
 <section id="post-process">
-<h3><span class="section-number">2.5.2.3. </span>Post-process<a class="headerlink" href="#post-process" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.2.3. </span>Post-process<a class="headerlink" href="#post-process" title="Permalink to this heading">#</a></h3>
 <p>Mount remote HPC folder on local folder.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs &lt;remote-address&gt;:&lt;remote-dir&gt; &lt;local-dir&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sshfs<span class="w"> </span>&lt;remote-address&gt;:&lt;remote-dir&gt;<span class="w"> </span>&lt;local-dir&gt;
 </pre></div>
 </div>
 <p><span style='color:red'>Why running matlab is very slow in the mounted folder?</span></p>
@@ -520,7 +477,7 @@ scripts_[fermi/rockfish].sh -&gt; launch script</p>
 </section>
 </section>
 <section id="nonlinear-forward-scalar">
-<h2><span class="section-number">2.5.3. </span>Nonlinear Forward Scalar<a class="headerlink" href="#nonlinear-forward-scalar" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.3. </span>Nonlinear Forward Scalar<a class="headerlink" href="#nonlinear-forward-scalar" title="Permalink to this heading">#</a></h2>
 <p>Difference with obs</p>
 <blockquote>
 <div><p>coriolis.f90
@@ -530,30 +487,30 @@ USE_SCALARS scalars.f90 stability.f90</p>
 <p><span style='color:red'>What scalar field represen t for?<span></p>
 <p>Build the code and copy it to the running folder.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./build-lesgo
-cp lesgo-mpi-scalars &lt;run-dir&gt;
+cp<span class="w"> </span>lesgo-mpi-scalars<span class="w"> </span>&lt;run-dir&gt;
 </pre></div>
 </div>
 <p>Run the LESGO with scalar field in series.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;run-dir&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;run-dir&gt;
 ./lesgo-mpi-scalars
 </pre></div>
 </div>
 <p>The output file is <code class="docutils literal notranslate"><span class="pre">theta.***</span></code>.</p>
 <section id="post-process-with-paraview">
-<h3><span class="section-number">2.5.3.1. </span>Post-process with Paraview<a class="headerlink" href="#post-process-with-paraview" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.3.1. </span>Post-process with Paraview<a class="headerlink" href="#post-process-with-paraview" title="Permalink to this heading">#</a></h3>
 <p>Go to the folder <code class="docutils literal notranslate"><span class="pre">Post_processing_TECPOT</span></code> and open <code class="docutils literal notranslate"><span class="pre">parame.ter</span></code> to modify the location of data, start/end/step of the timestep. Also check the domain is correct in <code class="docutils literal notranslate"><span class="pre">PARAM.H</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;lesgo-dir&gt;/Post_processing_TECPLOT
-vim parame.ter
-vim PARAM.H
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>&lt;lesgo-dir&gt;/Post_processing_TECPLOT
+vim<span class="w"> </span>parame.ter
+vim<span class="w"> </span>PARAM.H
 </pre></div>
 </div>
 <p>Build <code class="docutils literal notranslate"><span class="pre">./post.exe</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make clean
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>clean
 make
 </pre></div>
 </div>
 <p>Or</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash Makefile_bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bash<span class="w"> </span>Makefile_bash
 </pre></div>
 </div>
 <p>Import files.</p>
@@ -569,7 +526,7 @@ writeins3d.f90</p>
 </section>
 </section>
 <section id="linearized-forward">
-<h2><span class="section-number">2.5.4. </span>Linearized Forward<a class="headerlink" href="#linearized-forward" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.4. </span>Linearized Forward<a class="headerlink" href="#linearized-forward" title="Permalink to this heading">#</a></h2>
 <p>Linearized forward is runned in <code class="docutils literal notranslate"><span class="pre">run_F</span></code> folder while adjoint is in <code class="docutils literal notranslate"><span class="pre">run_A</span></code> foler. And the source code is located in <code class="docutils literal notranslate"><span class="pre">clean_version</span></code> folder.</p>
 <blockquote>
 <div><p>clean_version/lesgo_adjoint
@@ -589,17 +546,17 @@ nsteps</p>
 <p><span style='color:red'>what is the difference of $ and ! in the code.</span></p>
 </section>
 <section id="adjoint-of-the-linearized-forward">
-<h2><span class="section-number">2.5.5. </span>Adjoint of the Linearized Forward<a class="headerlink" href="#adjoint-of-the-linearized-forward" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.5. </span>Adjoint of the Linearized Forward<a class="headerlink" href="#adjoint-of-the-linearized-forward" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="validation-of-the-code">
-<h2><span class="section-number">2.5.6. </span>Validation of the code<a class="headerlink" href="#validation-of-the-code" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.6. </span>Validation of the code<a class="headerlink" href="#validation-of-the-code" title="Permalink to this heading">#</a></h2>
 <section id="validation-of-adjoint">
-<h3><span class="section-number">2.5.6.1. </span>Validation of Adjoint<a class="headerlink" href="#validation-of-adjoint" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.6.1. </span>Validation of Adjoint<a class="headerlink" href="#validation-of-adjoint" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\]</div>
 </section>
 <section id="validation-of-linearization">
-<h3><span class="section-number">2.5.6.2. </span>Validation of Linearization<a class="headerlink" href="#validation-of-linearization" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">8.5.6.2. </span>Validation of Linearization<a class="headerlink" href="#validation-of-linearization" title="Permalink to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 ||N(u_0 + \epsilon u_0\prime) - N(u_0)||^2 \approx ||L_u \epsilon u_0\prime||^2 = \epsilon^2||u_n\prime||^2\\
@@ -607,17 +564,17 @@ nsteps</p>
 \end{split}\]</div>
 <p><span style="color:red"> Question: Why this this valid? </span></p>
 <p>Start the validation by running</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make validation_linearization_loop
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>validation_linearization_loop
 </pre></div>
 </div>
 <p><span style="color:red"> Only lesgo-mpi can generate u_velocity data file. Should we add another procedure before we run the lesgo-mpi-DA?</span></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="nb">cd</span> <span class="k">$(</span>folder_true_forward<span class="k">)</span>  <span class="o">&amp;&amp;</span> mpirun -np <span class="k">$(</span>np<span class="k">)</span> ./lesgo-mpi-DA &gt; run_history<span class="o">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span><span class="nb">cd</span><span class="w"> </span><span class="k">$(</span>folder_true_forward<span class="k">)</span><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>mpirun<span class="w"> </span>-np<span class="w"> </span><span class="k">$(</span>np<span class="k">)</span><span class="w"> </span>./lesgo-mpi-DA<span class="w"> </span>&gt;<span class="w"> </span>run_history<span class="o">)</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="validation-of-adjoint-non-linear-forward">
-<h2><span class="section-number">2.5.7. </span>Validation of Adjoint - non-linear Forward<a class="headerlink" href="#validation-of-adjoint-non-linear-forward" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">8.5.7. </span>Validation of Adjoint - non-linear Forward<a class="headerlink" href="#validation-of-adjoint-non-linear-forward" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -658,7 +615,7 @@ nsteps</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">2.4. </span>LESGO configuration</p>
+        <p class="prev-next-title"><span class="section-number">8.4. </span>LESGO configuration</p>
       </div>
     </a>
     <a class="right-next"
@@ -666,7 +623,7 @@ nsteps</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">3. </span>Velocity Solver based on CN method</p>
+        <p class="prev-next-title"><span class="section-number">9. </span>Velocity Solver based on CN method</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -688,29 +645,29 @@ nsteps</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-environment-setup">2.5.1. A. Environment Setup</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-personal-pc">2.5.1.1. A.1. Personal PC</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-hpc-rockfish">2.5.1.2. A.2. HPC - Rockfish</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-environment-setup">8.5.1. A. Environment Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-personal-pc">8.5.1.1. A.1. Personal PC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-hpc-rockfish">8.5.1.2. A.2. HPC - Rockfish</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-nonlinear-forward-obs">2.5.2. B. Nonlinear Forward Obs</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1-compile">2.5.2.1. B.1. Compile</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run">2.5.2.2. Run</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process">2.5.2.3. Post-process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-nonlinear-forward-obs">8.5.2. B. Nonlinear Forward Obs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1-compile">8.5.2.1. B.1. Compile</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run">8.5.2.2. Run</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process">8.5.2.3. Post-process</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-forward-scalar">2.5.3. Nonlinear Forward Scalar</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process-with-paraview">2.5.3.1. Post-process with Paraview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-forward-scalar">8.5.3. Nonlinear Forward Scalar</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process-with-paraview">8.5.3.1. Post-process with Paraview</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearized-forward">2.5.4. Linearized Forward</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjoint-of-the-linearized-forward">2.5.5. Adjoint of the Linearized Forward</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-the-code">2.5.6. Validation of the code</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-adjoint">2.5.6.1. Validation of Adjoint</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-linearization">2.5.6.2. Validation of Linearization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearized-forward">8.5.4. Linearized Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adjoint-of-the-linearized-forward">8.5.5. Adjoint of the Linearized Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-the-code">8.5.6. Validation of the code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-adjoint">8.5.6.1. Validation of Adjoint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-linearization">8.5.6.2. Validation of Linearization</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-adjoint-non-linear-forward">2.5.7. Validation of Adjoint - non-linear Forward</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-of-adjoint-non-linear-forward">8.5.7. Validation of Adjoint - non-linear Forward</a></li>
 </ul>
   </nav></div>
 

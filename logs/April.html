@@ -1,0 +1,884 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Log for April &#8212; Adjoint-enhanced LESGO</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "dd": "\\mathrm{d}", "ii": "\\mathrm{i}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'logs/April';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../notebooks/main.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/source_location.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/source_location.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../notebooks/main.html">
+                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/background/FFT.html">6. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/background/MPI.html">MPI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lesgo/setup.html">7. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lesgo/velocity_solver.html">9. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/lesgo/pressure_solver.html">10. Pressure Solvers</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../notebooks/lesgo/scalar/scalar_solver.html">11. Scalar Solvers</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/lesgo/scalar/scalar_fvm.html">11.4. Scalar solver based on Finite Volume Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/lesgo/scalar/scalar_fvm_implicit.html">11.5. Implicit Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/lesgo/scalar/fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notebooks/lesgo/tests/scalar_validation_ex1.html">11.7. Validation case for scalar</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../notebooks/Paraview/readme.html">Paraview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../project_tracking.html">Project Tracking</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/logs/April.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Log for April</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Log for April</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log">Log</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesgo-stability-march-25">LESGO - Stability <em>March 25 -</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesgo-multi-scalar-march-25">LESGO - Multi-scalar <em>March 25 -</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process-paraview-automation-march-25">Post-Process - Paraview automation <em>March 25 -</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process-integral">Post-Process - integral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-march-27">System March 27 -</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulations-probablistic-framework">Simulations - Probablistic Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesgo-sponge-layer">LESGO - Sponge Layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-source-reverse-problem">Reading - Source reverse problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-script">Launch Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-util">python_util</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-log">Daily log</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#previous-log">Previous log</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-3-2023">April 3, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-5-2023">April 5, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-6-2023">April 6, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-8-2023">April 8, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-10-2023">April 10, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-11-2023">April 11, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-12-2023">April 12, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-13-2023">April 13, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-17-2023">April 17, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-29-2023">April 29, 2023</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="log-for-april">
+<h1>Log for April<a class="headerlink" href="#log-for-april" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p><span class="xref myst">Log for April</span></p></li>
+<li><p><span class="xref myst">Summary</span></p>
+<ul>
+<li><p><span class="xref myst">Log</span></p></li>
+<li><p><span class="xref myst">LESGO - Stability <em>March 25 -</em></span></p></li>
+<li><p><span class="xref myst">LESGO - Multi-scalar <em>March 25 -</em></span></p></li>
+<li><p><span class="xref myst">Post-Process - Paraview automation <em>March 25 -</em></span></p></li>
+<li><p><span class="xref myst">Post-Process - integral</span></p></li>
+<li><p><span class="xref myst">System March 27 -</span></p></li>
+<li><p><span class="xref myst">Simulations - Probablistic Framework</span></p></li>
+<li><p><span class="xref myst">LESGO - Sponge Layer</span></p></li>
+<li><p><span class="xref myst">Reading - Source reverse problem</span></p></li>
+<li><p><span class="xref myst">Launch Script</span></p></li>
+<li><p><span class="xref myst">python_util</span></p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">Daily log</span>
+- <span class="xref myst">Previous log</span>
+- <span class="xref myst">April 3, 2023</span>
+- <span class="xref myst">April 5, 2023</span>
+- <span class="xref myst">April 6, 2023</span>
+- <span class="xref myst">April 8, 2023</span>
+- <span class="xref myst">April 10, 2023</span>
+- <span class="xref myst">April 11, 2023</span>
+- <span class="xref myst">April 12, 2023</span>
+- <span class="xref myst">April 13, 2023</span>
+- <span class="xref myst">April 17, 2023</span>
+- <span class="xref myst">April 29, 2023</span></p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h1>
+<section id="log">
+<h2>Log<a class="headerlink" href="#log" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Write a tutorial of Paraview on cluster</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Finish the log of FFT</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Finish log of Spectral method</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Finish log of Crank-Nicolson</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Find out what is the jacobian parameter</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Find out how the tridiagonal matrix is inverse</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> What is Von Neumann stability analysis?</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Figure out how lesgo discretized in z direction.</p></li>
+</ul>
+</section>
+<section id="lesgo-stability-march-25">
+<h2>LESGO - Stability <em>March 25 -</em><a class="headerlink" href="#lesgo-stability-march-25" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Check theta Instability Problem</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Probably due to the stability criterion CFL. -&gt; turns out that all criterion is within reasonable range.</p>
+<ul>
+<li><p><strong>Slurm ID - 13684899</strong>      -&gt; Looks like explode
+Source Version : a85397092eb2026d82b5fcf22fddf4df0360421d
+CFL : 0.0625
+Pr : 1</p></li>
+</ul>
+</li>
+</ul>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Check what is the criterion for algorithm that lesgo used (Spectrum Method).</p></li>
+</ul>
+</li>
+</ul>
+<p>Dr. Zhu provides a new version of LESGO code which calculate the theta in an implicit way, but it is missing the scalars.f90 file.</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Run the implicit method LESGO.</p>
+<ul class="contains-task-list">
+<li><p>scalars.f90 is missing.</p></li>
+<li><p>Looks like if we want to use implicit method, the spectral method is no longer included anymore.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Figure out how should we apply the Crank-Nicolson method. Detail in <span class="xref myst">here</span></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Run with Kappa homogeneous</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Figure out the meaning of jacobian parameters</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot the contour of yz cross section for scalar</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Set the Prontal Number Pr = 0.71</p></li>
+<li><p>[ ]</p></li>
+</ul>
+</section>
+<section id="lesgo-multi-scalar-march-25">
+<h2>LESGO - Multi-scalar <em>March 25 -</em><a class="headerlink" href="#lesgo-multi-scalar-march-25" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Check multi-scalar</p>
+<ul class="simple">
+<li><p><strong>Slurm ID - 13684870</strong>
+Multi-scalar, theta.IC.01, –&gt; Check if one scalar, the scalar field will be wrong
+-&gt; No problem. Try 2 scalar to check if there is something wrong with multi-scalar.</p></li>
+<li><p><strong>Slurm ID - 13794376</strong>        -&gt; Discontinuous
+2 scalar</p></li>
+</ul>
+<p><em>scalars.f90</em> read RHS_T at the beginning, check if there are some terms left.</p>
+<ul class="simple">
+<li><p><strong>Slurm ID - 13798626</strong>        -&gt; Still discontinuous
+New version : 4d1fd21cf2d232f598ee184b158561d59c69484d
+2 scalar</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Run simulation with two same theta IC and two different theta IC to compare and see if the code is wrong because missing variable recorded.</p>
+<ul class="simple">
+<li><p>All zero because dimension is not match! -&gt; wrong output order in write_array_to_file. Fixed.</p></li>
+<li><p>Wrong order. Try another one.</p></li>
+<li><p>Another one.</p></li>
+<li><p>The magnitude of original gaussian pdf generation function also depend on the variance. If variance set to be too small. Might have problem.</p></li>
+<li><p><strong>Slurm ID - 13919285</strong> : One Scalar</p></li>
+<li></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Run simulation with single processor to check if there is problem with ghost cell</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Plot the contour of cross-section to visualize the jumping error.</p></li>
+</ul>
+</section>
+<section id="post-process-paraview-automation-march-25">
+<h2>Post-Process - Paraview automation <em>March 25 -</em><a class="headerlink" href="#post-process-paraview-automation-march-25" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Automatically post-process with pvpython script</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Write an output subroutine in lesgo to make the output in VTK format</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Draft version <em>March 28</em></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Include correct x, y, z coordinate</p></li>
+<li><p><strong>Slurm ID - 13908823</strong> Draft code -&gt; <code class="docutils literal notranslate"><span class="pre">Name</span> <span class="pre">in</span> <span class="pre">only-list</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">exist</span> <span class="pre">or</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">accessible.</span> </code> –&gt; Need to specify the subroutine name as public to call from outside.</p></li>
+<li><p><strong>Slurm ID - 13911292</strong> Fix -&gt; ffname2 not defined</p></li>
+<li><p><strong>Slurm ID - 13912019</strong></p></li>
+</ul>
+</li>
+<li><p>Seems like paraview cannot read vtk directly, but I add another subroutine to output the result directly in tecplot format. However, one might need to be attention about the coordinate difference for uv grid and w grid.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Finish io.write_tecplot_file</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Check grid location</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Finish the pvpython script</p></li>
+<li><p>Now that the pvpython script could work, but we still need to post-process the output binary file before use the pvpython script to visualize the result. Maybe output in VTK format for next step.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Setup the pvpython ipykernel</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Check how fortran control output in MPI</p>
+<ul>
+<li><p><span style='color:red'>read(19001,rec=coord+1)</span> Is this related?</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="post-process-integral">
+<h2>Post-Process - integral<a class="headerlink" href="#post-process-integral" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Integral theta in time and then plot the plume.</p></li>
+</ul>
+</section>
+<section id="system-march-27">
+<h2>System March 27 -<a class="headerlink" href="#system-march-27" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> VScode seems to be banned on Rockfish. Try to run lesgo and develop on local machine.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> fortran language server is not working on macbook.</p></li>
+</ul>
+</section>
+<section id="simulations-probablistic-framework">
+<h2>Simulations - Probablistic Framework<a class="headerlink" href="#simulations-probablistic-framework" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Run a simulation with 1 source 1 sensor and 100 different velocity profile. (could be simplied to 1 source and 100 sensor placed in different x location since the turbulence profile is homogeneous in x direction)</p></li>
+</ul>
+</section>
+<section id="lesgo-sponge-layer">
+<h2>LESGO - Sponge Layer<a class="headerlink" href="#lesgo-sponge-layer" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Add a sponge layer at the beginning and the ending of the simulation domain. (BC)</p></li>
+</ul>
+</section>
+<section id="reading-source-reverse-problem">
+<h2>Reading - Source reverse problem<a class="headerlink" href="#reading-source-reverse-problem" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Read paper of Tina chow, UCB <a class="reference external" href="https://chow.ce.berkeley.edu/publications/">link</a></p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Read paper of flow over cube in the channel flow</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Check if reverse problem has been studied in smooth wall configuration</p></li>
+</ul>
+</section>
+<section id="launch-script">
+<h2>Launch Script<a class="headerlink" href="#launch-script" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Update new launch script for rockfish. Download source code from github and compile in the scratch folder since if multiple jobs are submitted. There will be some conflicts.</p>
+<ul>
+<li><p><strong>Slurm ID - 13909469</strong> Test –&gt; Fix typo</p></li>
+<li><p><strong>SLurm ID - 13909471</strong> Test –&gt; Works</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Update the launch script to copy initial condition of velocity and theta field to the running folder.</p>
+<ul>
+<li><p><strong>Slurm ID - 13979221</strong>  -&gt; Didn’t go to the scratch folder before running the simulation.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="python-util">
+<h2>python_util<a class="headerlink" href="#python-util" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> update generate_field</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="daily-log">
+<h1>Daily log<a class="headerlink" href="#daily-log" title="Permalink to this heading">#</a></h1>
+<section id="previous-log">
+<h2>Previous log<a class="headerlink" href="#previous-log" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Run with Kappa homogeneous</p>
+<ul class="contains-task-list">
+<li><p><strong>Slurm ID - 13889918</strong> -&gt; magnitude of theta seems to be wrong.</p></li>
+<li><p><strong>Slurm ID - 13920275</strong>-&gt; Not working. Seems like something is wrong with the new launch script.</p></li>
+<li><p><strong>Slurm ID - 13921607</strong> Old launch script.-&gt; Works. But there is still something wrong about the IC</p></li>
+<li><p>Generate another IC by matlab. Try</p>
+<ul>
+<li><p><strong>Slurm ID - 13921609</strong> -&gt; Not working. Might be related to the copy process is still not finished while the mpirun has already started.</p></li>
+<li><p><strong>Slurm ID - 13921610</strong> sleep for 3 seconds before the mpirun starts. -&gt; Not working. Exit for some unknown reason.</p></li>
+<li><p><strong>Slurm ID - 13960852</strong> New IC generated from python. -&gt; Wrong launch script</p></li>
+<li><p><strong>Slurm ID - 13960886</strong> Old script to test on the IC. -&gt; Works. Check the visualization. -&gt; IC is perfect.</p></li>
+<li><p><strong>Slurm ID - 13960892</strong> New launch script. -&gt; Still not working.</p></li>
+<li><p><strong>Slurm ID - 13960903</strong> 1k timestep with one scalar.</p></li>
+<li><p><strong>Slurm ID - 13963336</strong> Explicit method result.</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> update the launch script to build from source code clone from github. Test case 2c.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="april-3-2023">
+<h2>April 3, 2023<a class="headerlink" href="#april-3-2023" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Wall roughness and block influence to the theta profile</p></li>
+<li><p>How the non-dimensionless theta <span class="math notranslate nohighlight">\(\theta^\tau\)</span> define</p></li>
+<li><p>Scalar transport and momentum similarity</p></li>
+<li><p>Tina 2003 Review Adjoint - 08 block -</p></li>
+<li><p>Particle and scalar</p></li>
+<li><p>Cornell Li Qi</p></li>
+<li><p>Boundary Condition Review</p></li>
+</ol>
+</section>
+<section id="april-5-2023">
+<h2>April 5, 2023<a class="headerlink" href="#april-5-2023" title="Permalink to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> New theta IC has been updated to inputs/turbulence_256_256_128 folder. Source locates at x=0.2Lx, 0.5Lx and 0.8Lx.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Find the error of launch script is that didn’t go to the scratch directory before starting the simulation.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Run 10k time steps simulation with CN method as well as explicit method, and compare the result.</p>
+<ul>
+<li><p><strong>Slurm ID - 13980494</strong> 2c - CN</p></li>
+<li><p>**Slurm ID - ** 2b - explicit</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Finish the subroutine that output the file to tecplot. Or. Read the data directly from binary file through python script.</p>
+<ul>
+<li><p>Directly read from binary file is possible. Detail in this <a class="reference external" href="https://docs.paraview.org/en/latest/ReferenceManual/pythonProgrammableFilter.html">link</a>. Check chapter 5.</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Run the simulation of multi-scalar code, with one scalar, two same scalar and two different scalar.</p>
+<ul>
+<li><p><strong>Slurm ID - 13980738</strong> 1 scalar -&gt; looks like something wrong with post-processing</p></li>
+<li><p><strong>Slurm ID - 13981868</strong> 3 scalar</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="april-6-2023">
+<h2>April 6, 2023<a class="headerlink" href="#april-6-2023" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Paraivew doesn’t support programable filter together with paraview process. So one might still need to generate tecplot file before put data into paraview.</p></li>
+<li><p>Work on post-processing script in the folder of <strong>Slurm ID 13998692</strong></p>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> Looks like the output of thetas is problematic. Write new output script for multi-scalar.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="april-8-2023">
+<h2>April 8, 2023<a class="headerlink" href="#april-8-2023" title="Permalink to this heading">#</a></h2>
+<p><strong>Slurm ID - 14020330</strong> New multi-scalar, 10k time steps.</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> multi-scalar backward</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" checked="checked" disabled="disabled" type="checkbox"> multi-scalar CN method</p></li>
+</ul>
+</section>
+<section id="april-10-2023">
+<h2>April 10, 2023<a class="headerlink" href="#april-10-2023" title="Permalink to this heading">#</a></h2>
+<p><strong>Slurm ID - 14020330</strong> -&gt; Stable.</p>
+<p><strong>Slurm ID - 14041032</strong> Implicit, 1k time steps. -&gt; Difference is not very significant with explicit method.</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Run Backward simulation</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Record forward velocity</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Run backward simulation
+<strong>Slurm ID - 14041175</strong> Backward CN, 1k</p></li>
+</ul>
+</li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Run simulation with CFL=0.0625, Pr=0.71 for 10k timestep forward and backward.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Summarize thermal boundary layer.</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Send report summary.</p></li>
+</ul>
+</section>
+<section id="april-11-2023">
+<h2>April 11, 2023<a class="headerlink" href="#april-11-2023" title="Permalink to this heading">#</a></h2>
+<p><strong>Slurm ID - 14048986</strong> Pr = 0.71, 10 time steps and output baseflow.
+-&gt; NPROC not consistence.
+<strong>Slurm ID - 14049077</strong> Setup up nproc in source code.
+-&gt; Still not working. Looks strange since I have already change the nproc in hard code but there is still error appearing.
+<strong>Slurm ID - 14049144</strong> Try nproc=16.
+-&gt; Wrong baseflow_flag
+<strong>Slurm ID - 14049189</strong> Try nproc=64
+-&gt; looks like lesgo.conf is also readed when the file is compile.
+<strong>Slurm ID - 14050094</strong> new code.
+-&gt; Something wrong with the launch script ( didn’t specify the nproc ).
+<strong>Slurm ID - 14050571</strong> new launch script.
+-&gt; success
+<strong>Slurm ID - 14052171</strong> backward.
+-&gt; Initial Condition of velocity field is wrong. Also, it looks like the boundary velocity is not correct.</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Check nproc setting in larger simulation requiring more than one nodes.</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> check when lesgo.conf is read with cmake compiling</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="april-12-2023">
+<h2>April 12, 2023<a class="headerlink" href="#april-12-2023" title="Permalink to this heading">#</a></h2>
+<p>Fix the BC, and rerun
+<strong>Slurm ID - 14079216</strong> -&gt; lbc=1 (wall)</p>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> Run LESGO on Fermi. Cannot create scratch folder.</p></li>
+</ul>
+</section>
+<section id="april-13-2023">
+<h2>April 13, 2023<a class="headerlink" href="#april-13-2023" title="Permalink to this heading">#</a></h2>
+<p><strong>Slurm ID - 14103340</strong> Backward simulation.
+-&gt; u_base instead of u_velocity
+<strong>Slurm ID - 14103448</strong> New launch script.
+-&gt; wrong output timestep
+<strong>Slurm ID - 14104343</strong> Output every 100 steps.</p>
+<p>Velocity IC is totally wrong. Regenerate one by interpolation and then run 10k to stabilize.
+<strong>Slurm ID - 14107081</strong> New Velocity IC.
+-&gt; Network issue
+<strong>Slurm ID - 14129029</strong> NPROC=16
+-&gt; Post Processing not working
+<strong>Slurm ID - 14136248</strong> 10k, 3 scalars</p>
+</section>
+<section id="april-17-2023">
+<h2>April 17, 2023<a class="headerlink" href="#april-17-2023" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Re=395</p></li>
+<li><p>Sponge layer for scalar, both sides</p></li>
+<li><p>forward, continuous source</p></li>
+<li><p>adjoint, time integral</p></li>
+</ol>
+</section>
+<section id="april-29-2023">
+<h2>April 29, 2023<a class="headerlink" href="#april-29-2023" title="Permalink to this heading">#</a></h2>
+<p>Try to launch the simulation on fermi but didn’t work. Locate the error to divstress_uv.f90.
+-&gt; Seems like the problem is kind of related to FFTW or memory resource.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./logs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Log for April</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log">Log</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesgo-stability-march-25">LESGO - Stability <em>March 25 -</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesgo-multi-scalar-march-25">LESGO - Multi-scalar <em>March 25 -</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process-paraview-automation-march-25">Post-Process - Paraview automation <em>March 25 -</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#post-process-integral">Post-Process - integral</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-march-27">System March 27 -</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulations-probablistic-framework">Simulations - Probablistic Framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lesgo-sponge-layer">LESGO - Sponge Layer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-source-reverse-problem">Reading - Source reverse problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#launch-script">Launch Script</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-util">python_util</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#daily-log">Daily log</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#previous-log">Previous log</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-3-2023">April 3, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-5-2023">April 5, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-6-2023">April 6, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-8-2023">April 8, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-10-2023">April 10, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-11-2023">April 11, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-12-2023">April 12, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-13-2023">April 13, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-17-2023">April 17, 2023</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#april-29-2023">April 29, 2023</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Zejian You
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

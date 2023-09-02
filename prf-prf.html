@@ -136,7 +136,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="README.html">
+<a class="navbar-brand logo" href="notebooks/main.html">
   
   
   
@@ -156,21 +156,42 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="README.html">
-                    Adjoint-enahnced LESGO
+                <a class="reference internal" href="notebooks/main.html">
+                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO solver</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lesgo/setup.html">1. Setup</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lesgo/velocity_solver.html">3. Velocity Solvers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/lesgo/pressure_solver.html">4. Pressure Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="notebooks/background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Test Cases</span></p>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/background/FFT.html">6. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/cases/LST/Readme.html">5. Linear Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/background/MPI.html">MPI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/lesgo/setup.html">7. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="notebooks/lesgo/velocity_solver.html">9. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/lesgo/pressure_solver.html">10. Pressure Solvers</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="notebooks/lesgo/scalar/scalar_solver.html">11. Scalar Solvers</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/lesgo/scalar/scalar_fvm.html">11.4. Scalar solver based on Finite Volume Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/lesgo/scalar/scalar_fvm_implicit.html">11.5. Implicit Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/lesgo/scalar/fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notebooks/lesgo/tests/scalar_validation_ex1.html">11.7. Validation case for scalar</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
 <ul class="nav bd-sidenav">
@@ -179,23 +200,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="project_tracking.html">Project Tracking</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/background/Adjoint_equation.html">6. Adjoint Advection-Diffusion Equation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="notebooks/background/numerical_methods/numerical_methods.html">7. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/background/numerical_methods/Stability_Criterion.html">7.4. Stability Criterion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="notebooks/background/numerical_methods/matrix.html">7.5. Tri-diagonal Matrix</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/background/Steepest_Descent.html">8. Method of The Steepest Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/background/subgrid-scale_model.html">9. Subgrid-scale model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/background/FFT.html">10. Fast Fourier Transform</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="notebooks/background/FFTW.html">FFTW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="notebooks/background/MPI.html">MPI</a></li>
 </ul>
 
     </div>
@@ -237,53 +241,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI/issues/new?title=Issue%20on%20page%20%2Fprf-prf.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -349,7 +306,8 @@ document.write(`
    <div class="modindex-jumpbox">
    <a href="#cap-algorithm-0"><strong>algorithm-0</strong></a> | 
    <a href="#cap-definition-0"><strong>definition-0</strong></a> | 
-   <a href="#cap-definition-1"><strong>definition-1</strong></a>
+   <a href="#cap-definition-1"><strong>definition-1</strong></a> | 
+   <a href="#cap-definition:modified_wavenumber_fvm"><strong>definition:modified_wavenumber_fvm</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -376,6 +334,14 @@ document.write(`
        <td></td>
        <td>
        <a href="notebooks/background/FFT.html#definition-1"><code class="xref">definition-1</code></a> <em>(notebooks/background/FFT)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition:modified_wavenumber_fvm"><td></td><td>
+       <strong>definition:modified_wavenumber_fvm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="notebooks/lesgo/scalar/scalar_fvm_implicit.html#definition:modified_wavenumber_fvm"><code class="xref">definition:modified_wavenumber_fvm</code></a> <em>(notebooks/lesgo/scalar/scalar_fvm_implicit)</em></td><td>
        <em>definition</em></td></tr>
    </table>
 

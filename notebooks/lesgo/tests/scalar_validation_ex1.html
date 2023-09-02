@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Validation case for scalar &#8212; Adjoint-enhanced LESGO</title>
+    <title>11.7. Validation case for scalar &#8212; Adjoint-enhanced LESGO</title>
   
   
   
@@ -65,6 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lesgo/tests/scalar_validation_ex1';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Paraview" href="../../Paraview/readme.html" />
+    <link rel="prev" title="11.6. Fourier Transform in Finite Volume Method with modified wave number" href="../scalar/fvm_fft.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -130,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../../../README.html">
+<a class="navbar-brand logo" href="../../main.html">
   
   
   
@@ -150,21 +152,42 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../../README.html">
-                    Adjoint-enahnced LESGO
+                <a class="reference internal" href="../../main.html">
+                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO solver</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../setup.html">1. Setup</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../velocity_solver.html">3. Velocity Solvers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pressure_solver.html">4. Pressure Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Test Cases</span></p>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFT.html">6. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../cases/LST/Readme.html">5. Linear Stability Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/MPI.html">MPI</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">7. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../velocity_solver.html">9. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pressure_solver.html">10. Pressure Solvers</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../scalar/scalar_solver.html">11. Scalar Solvers</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../scalar/scalar_fvm.html">11.4. Scalar solver based on Finite Volume Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scalar/scalar_fvm_implicit.html">11.5. Implicit Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scalar/fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">11.7. Validation case for scalar</a></li>
+</ul>
+</li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
 <ul class="nav bd-sidenav">
@@ -173,23 +196,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../project_tracking.html">Project Tracking</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../background/Adjoint_equation.html">6. Adjoint Advection-Diffusion Equation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../background/numerical_methods/numerical_methods.html">7. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/Stability_Criterion.html">7.4. Stability Criterion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/matrix.html">7.5. Tri-diagonal Matrix</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/Steepest_Descent.html">8. Method of The Steepest Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/subgrid-scale_model.html">9. Subgrid-scale model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/FFT.html">10. Fast Fourier Transform</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../background/FFTW.html">FFTW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/MPI.html">MPI</a></li>
 </ul>
 
     </div>
@@ -231,53 +237,6 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lesgo/tests/scalar_validation_ex1.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
-</div>
-
 
 
 
@@ -386,32 +345,28 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="validation-case-for-scalar">
-<h1>Validation case for scalar<a class="headerlink" href="#validation-case-for-scalar" title="Permalink to this heading">#</a></h1>
-<p>Based on the configuration in previous study <span id="id1">[<a class="reference internal" href="../velocity_solver.html#id11">Kim and Moin, n.d.</a>]</span>,</p>
+<h1><span class="section-number">11.7. </span>Validation case for scalar<a class="headerlink" href="#validation-case-for-scalar" title="Permalink to this heading">#</a></h1>
+<p>Based on the configuration in previous study <span id="id1">[<a class="reference internal" href="../velocity_solver.html#id9" title="J. Kim and P. Moin. Transport of Passive Scalars in Turbulent Channel Flow. In Jean-Claude André, Jean Cousteix, Franz Durst, Brian E. Launder, Frank W. Schmidt, and James H. Whitelaw, editors, Turbulent Shear Flows 6, pages 85–96. Springer Berlin Heidelberg, Berlin, Heidelberg, 1989. doi:10.1007/978-3-642-73948-4_9.">Kim and Moin, 1989</a>]</span>,</p>
 <div class="docutils container" id="id2">
 <div class="citation" id="id4" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>Cho<span class="fn-bracket">]</span></span>
-<p><strong>missing journal in chorinConvergenceDiscreteApproximations1969</strong></p>
+<span class="label"><span class="fn-bracket">[</span>Cho69<span class="fn-bracket">]</span></span>
+<p>Alexandre Joel Chorin. On the convergence of discrete approximations to the Navier-Stokes equations. <em>Mathematics of Computation</em>, 23(106):341–353, 1969. <a class="reference external" href="https://doi.org/10.1090/S0025-5718-1969-0242393-5">doi:10.1090/S0025-5718-1969-0242393-5</a>.</p>
 </div>
-<div class="citation" id="id7" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>For<span class="fn-bracket">]</span></span>
-<p><strong>missing journal in fornbergGenerationFiniteDifference</strong></p>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">KM89</a><span class="fn-bracket">]</span></span>
+<p>J. Kim and P. Moin. Transport of Passive Scalars in Turbulent Channel Flow. In Jean-Claude André, Jean Cousteix, Franz Durst, Brian E. Launder, Frank W. Schmidt, and James H. Whitelaw, editors, <em>Turbulent Shear Flows 6</em>, pages 85–96. Springer Berlin Heidelberg, Berlin, Heidelberg, 1989. <a class="reference external" href="https://doi.org/10.1007/978-3-642-73948-4_9">doi:10.1007/978-3-642-73948-4_9</a>.</p>
 </div>
-<div class="citation" id="id10" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">KM</a><span class="fn-bracket">]</span></span>
-<p><strong>missing year in kimTransportPassiveScalars1989</strong></p>
+<div class="citation" id="id9" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>KK01<span class="fn-bracket">]</span></span>
+<p>Cetin Kiris and Dochan Kwak. Numerical solution of incompressible Navier–Stokes equations using a fractional-step approach. <em>Computers &amp; Fluids</em>, 30(7-8):829–851, September 2001. <a class="reference external" href="https://doi.org/10.1016/S0045-7930(01)00031-7">doi:10.1016/S0045-7930(01)00031-7</a>.</p>
 </div>
 <div class="citation" id="id13" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>LM<span class="fn-bracket">]</span></span>
-<p><strong>missing journal in leeDirectNumericalSimulation2015</strong></p>
+<span class="label"><span class="fn-bracket">[</span>Pop00<span class="fn-bracket">]</span></span>
+<p>Stephen B. Pope. <em>Turbulent Flows</em>. Cambridge University Press, first edition, August 2000. ISBN 978-0-521-59125-6 978-0-521-59886-6 978-0-511-84053-1. <a class="reference external" href="https://doi.org/10.1017/CBO9780511840531">doi:10.1017/CBO9780511840531</a>.</p>
 </div>
-<div class="citation" id="id17" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>Pop<span class="fn-bracket">]</span></span>
-<p><strong>missing year in popeTurbulentFlows2000a</strong></p>
-</div>
-<div class="citation" id="id18" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span>WHZ<span class="fn-bracket">]</span></span>
-<p><strong>missing journal in wangSpatialReconstructionSteady2019a</strong></p>
+<div class="citation" id="id14" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>WHZ19<span class="fn-bracket">]</span></span>
+<p>Qi Wang, Yosuke Hasegawa, and Tamer A. Zaki. Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow. <em>Journal of Fluid Mechanics</em>, 870:316–352, July 2019. <a class="reference external" href="https://doi.org/10.1017/jfm.2019.241">doi:10.1017/jfm.2019.241</a>.</p>
 </div>
 </div>
 </div>
@@ -448,6 +403,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../scalar/fvm_fft.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">11.6. </span>Fourier Transform in Finite Volume Method with modified wave number</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../Paraview/readme.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Paraview</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
