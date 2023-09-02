@@ -1,0 +1,1310 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Full Channel LST &#8212; Adjoint-enhanced LESGO</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "dd": "\\mathrm{d}", "ii": "\\mathrm{i}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/cases/LST/LST_Full';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/source_location.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/source_location.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    Adjoint-enahnced LESGO
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO solver</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lesgo/setup.html">1. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../lesgo/velocity_solver.html">3. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesgo/pressure_solver.html">4. Pressure Solvers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Test Cases</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Readme.html">5. Linear Stability Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Paraview/readme.html">Paraview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../project_tracking.html">Project Tracking</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../background/Adjoint_equation.html">6. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../background/numerical_methods/numerical_methods.html">7. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/Stability_Criterion.html">7.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/matrix.html">7.5. Tri-diagonal Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Steepest_Descent.html">8. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/subgrid-scale_model.html">9. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFT.html">10. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/MPI.html">MPI</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI/issues/new?title=Issue%20on%20page%20%2Fnotebooks/cases/LST/LST_Full.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/cases/LST/LST_Full.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Full Channel LST</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lst">LST</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="full-channel-lst">
+<h1>Full Channel LST<a class="headerlink" href="#full-channel-lst" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">turb.lesgo_utils</span> <span class="kn">import</span> <span class="n">lesgo_data</span><span class="p">,</span> <span class="n">read_array_from_file</span><span class="p">,</span> <span class="n">write_array_to_file</span>
+<span class="kn">from</span> <span class="nn">pyutils</span> <span class="kn">import</span> <span class="n">plot_utils</span> <span class="k">as</span> <span class="n">pltutils</span>
+<span class="kn">from</span> <span class="nn">pyutils.cartesian</span> <span class="kn">import</span> <span class="n">meshgrid</span>
+<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft2</span><span class="p">,</span> <span class="n">ifft2</span><span class="p">,</span> <span class="n">fft</span><span class="p">,</span> <span class="n">ifft</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">colors</span><span class="p">,</span> <span class="n">cm</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="n">date_marker</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y_%m_</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">turb.lesgo_utils</span> <span class="kn">import</span> <span class="n">lesgo_data</span><span class="p">,</span> <span class="n">read_array_from_file</span><span class="p">,</span> <span class="n">write_array_to_file</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">pyutils</span> <span class="kn">import</span> <span class="n">plot_utils</span> <span class="k">as</span> <span class="n">pltutils</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">pyutils.cartesian</span> <span class="kn">import</span> <span class="n">meshgrid</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;turb&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">root_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full&#39;</span>
+
+<span class="n">dims</span> <span class="o">=</span> <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">128</span><span class="p">]</span>
+<span class="n">domain</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">ldata</span> <span class="o">=</span> <span class="n">lesgo_data</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">ntheta</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">t_total</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">tstep</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">tt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_total</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">tstep</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Create config template</span>
+<span class="c1"># ldata._read_lesgoconf(&#39;/home/zyou6474/Projects/lesgo_eri/src/lesgo.conf&#39;)</span>
+<span class="c1"># ldata._write_conf(&#39;/home/zyou6474/Projects/ERI/notebooks/cases/LST/configs/config_LST_new.ini&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read template config</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">_read_conf</span><span class="p">(</span><span class="s1">&#39;/home/zyou6474/Projects/ERI/notebooks/cases/LST/configs/config_LST_Full.ini&#39;</span><span class="p">)</span>
+
+<span class="c1"># Use parabolic velocity profile as IC</span>
+<span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">zc</span> <span class="o">=</span> <span class="n">ldata</span><span class="o">.</span><span class="n">coords</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">zc</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;u_ic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zz</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">-</span><span class="n">zz</span><span class="p">)</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;v_ic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zz</span> <span class="o">*</span> <span class="mi">0</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;w_ic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">zz</span> <span class="o">*</span> <span class="mi">0</span>
+
+<span class="c1"># Create single wavenumber theta in each layer as Initial Condition</span>
+<span class="c1"># mesh = meshgrid(domain, dims)</span>
+<span class="n">thetaic_shape</span> <span class="o">=</span> <span class="n">dims</span><span class="o">*</span><span class="mi">1</span>
+<span class="n">thetaic_shape</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dims</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">thetaic_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">thetaic_shape</span><span class="p">)</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta_IC&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">thetaic_shape</span><span class="p">)</span> 
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dims</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+    <span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta_IC&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta_IC&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xc</span><span class="p">)[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span> <span class="o">+</span> <span class="n">yc</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span><span class="mi">0</span> 
+
+<span class="c1"># Switch off Scalar source</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SCALAR&#39;</span><span class="p">][</span><span class="s1">&#39;source_opt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;0&#39;</span>
+
+<span class="n">ldata</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SCALAR&#39;</span><span class="p">][</span><span class="s1">&#39;ntheta&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">dims</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ldata</span><span class="o">.</span><span class="n">_fnames</span><span class="p">(</span><span class="n">fmt_ntheta</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.3i</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">write_inputs</span><span class="p">()</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">_write_conf</span><span class="p">(</span><span class="s1">&#39;/home/zyou6474/Projects/ERI/notebooks/cases/LST/configs/config_LST_Full_</span><span class="si">%s</span><span class="s1">.ini&#39;</span> <span class="o">%</span> <span class="n">date_marker</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/u_velocity.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/v_velocity.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/w_velocity.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.001.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.002.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.003.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.004.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.005.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.006.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.007.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.008.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.009.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.010.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.011.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.012.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.013.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.014.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.015.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.016.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.017.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.018.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.019.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.020.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.021.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.022.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.023.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.024.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.025.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.026.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.027.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.028.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.029.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.030.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.031.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.032.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.033.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.034.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.035.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.036.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.037.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.038.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.039.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.040.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.041.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.042.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.043.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.044.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.045.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.046.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.047.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.048.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.049.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.050.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.051.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.052.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.053.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.054.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.055.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.056.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.057.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.058.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.059.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.060.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.061.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.062.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.063.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.064.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.065.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.066.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.067.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.068.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.069.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.070.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.071.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.072.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.073.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.074.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.075.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.076.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.077.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.078.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.079.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.080.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.081.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.082.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.083.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.084.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.085.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.086.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.087.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.088.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.089.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.090.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.091.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.092.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.093.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.094.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.095.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.096.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.097.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.098.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.099.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.100.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.101.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.102.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.103.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.104.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.105.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.106.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.107.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.108.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.109.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.110.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.111.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.112.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.113.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.114.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.115.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.116.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.117.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.118.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.119.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.120.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.121.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.122.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.123.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.124.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.125.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.126.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.127.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/theta.128.IC
+Write configs in /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/61_LST_Full/inputs/lesgo.conf
+Configs is written in /home/zyou6474/Projects/ERI/notebooks/cases/LST/configs/config_LST_Full_2023_09_02.ini
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check theta ICs</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta_IC&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">twilight_shifted</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fd831a0ad40&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/4caac4e930dad8dff22581385a041aa0e046dfaacaac47d04da1d4489ed77842.png" src="../../../_images/4caac4e930dad8dff22581385a041aa0e046dfaacaac47d04da1d4489ed77842.png" />
+</div>
+</div>
+<section id="lst">
+<h2>LST<a class="headerlink" href="#lst" title="Permalink to this heading">#</a></h2>
+<p>[Reference ???]</p>
+<div class="math notranslate nohighlight">
+\[
+A\hat{T}_{t=0}^{kx=1, ky=0} = \hat{T}_{t=1}^{kx=1, ky=0}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ic_field</span> <span class="o">=</span> <span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta_IC&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">k</span><span class="p">]</span>
+<span class="n">coef_ic</span> <span class="o">=</span> <span class="n">fft2</span><span class="p">(</span><span class="n">ic_field</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coef_ic</span><span class="p">)</span>
+<span class="n">kx</span><span class="p">,</span> <span class="n">ky</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unravel_index</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">coef_ic</span><span class="p">)</span><span class="o">.</span><span class="n">argmax</span><span class="p">(),</span> <span class="p">(</span><span class="n">dims</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">dims</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">,</span> <span class="n">coef_ic</span><span class="p">[</span><span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-4.44089210e-16-0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [ 2.49715612e+01-1.25540516e+02j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [-8.34301364e-16-6.59438833e-15j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [-2.66453526e-15-1.47158219e-15j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [ 1.77635684e-15-5.77315973e-15j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [-8.88178420e-16-6.21724894e-15j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [-2.71841231e-15-6.59438833e-15j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [ 2.84217094e-14-2.13162821e-14j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [-1.02140518e-14-0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [ 2.84217094e-14+2.13162821e-14j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [-2.71841231e-15+6.59438833e-15j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [-8.88178420e-16+6.21724894e-15j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [ 1.77635684e-15+5.77315973e-15j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [-2.66453526e-15+1.47158219e-15j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [-8.34301364e-16+6.59438833e-15j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]
+ [ 2.49715612e+01+1.25540516e+02j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j
+   0.00000000e+00-0.00000000e+00j  0.00000000e+00-0.00000000e+00j]]
+1 0 (24.9715612180644-125.5405158916135j)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kx</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ky</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">coef_ic</span><span class="p">[</span><span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(24.9715612180644-125.5405158916135j)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ldata</span><span class="o">.</span><span class="n">_fnames</span><span class="p">(</span><span class="n">fmt_ntheta</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.3i</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">Normalize</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">cmap</span> <span class="o">=</span> <span class="n">cm</span><span class="o">.</span><span class="n">twilight_shifted</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x7fd831987880&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/a515bdd2531f4b071cdc0d5f2f18636b7aae1967e8ca783ef72e01ea24c99bc6.png" src="../../../_images/a515bdd2531f4b071cdc0d5f2f18636b7aae1967e8ca783ef72e01ea24c99bc6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">nk</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">ntheta</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">2</span><span class="p">]):</span>
+      <span class="n">B</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fft2</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">][</span><span class="n">nk</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:,</span> <span class="n">k</span><span class="p">])[</span><span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">])</span>
+      
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">ntheta</span><span class="p">,</span> <span class="n">ldata</span><span class="o">.</span><span class="n">dims</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2.48406822e+01-1.24882572e+02j 4.19919933e-02-2.11108057e-01j
+  6.80580924e-05-3.42151217e-04j ... 0.00000000e+00+0.00000000e+00j
+  0.00000000e+00+0.00000000e+00j 0.00000000e+00+0.00000000e+00j]
+ [4.28901718e-02-2.15623611e-01j 2.48881392e+01-1.25121216e+02j
+  4.03371962e-02-2.02788926e-01j ... 0.00000000e+00+0.00000000e+00j
+  0.00000000e+00+0.00000000e+00j 0.00000000e+00+0.00000000e+00j]
+ [7.09970179e-05-3.56926546e-04j 4.11978686e-02-2.07115924e-01j
+  2.48915595e+01-1.25138472e+02j ... 0.00000000e+00+0.00000000e+00j
+  0.00000000e+00+0.00000000e+00j 0.00000000e+00+0.00000000e+00j]
+ ...
+ [0.00000000e+00+0.00000000e+00j 0.00000000e+00+0.00000000e+00j
+  0.00000000e+00+0.00000000e+00j ... 2.49684861e+01-1.25525857e+02j
+  1.45920896e-03-7.33598563e-03j 8.52255814e-08-4.28460664e-07j]
+ [0.00000000e+00+0.00000000e+00j 0.00000000e+00+0.00000000e+00j
+  0.00000000e+00+0.00000000e+00j ... 1.46001410e-03-7.34001503e-03j
+  2.49685494e+01-1.25525861e+02j 1.45829637e-03-7.33137939e-03j]
+ [0.00000000e+00+0.00000000e+00j 0.00000000e+00+0.00000000e+00j
+  0.00000000e+00+0.00000000e+00j ... 8.52962395e-08-4.28813715e-07j
+  1.45870054e-03-7.33339246e-03j 2.49700707e+01-1.25533187e+02j]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">ntheta</span><span class="p">)</span> <span class="o">*</span> <span class="n">coef_ic</span><span class="p">[</span><span class="n">kx</span><span class="p">,</span> <span class="n">ky</span><span class="p">]</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">B</span> <span class="o">@</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">I</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 9.94759106e-01-4.55466876e-08j  1.68159302e-03-7.69945120e-11j
+   2.72542463e-06-1.24788065e-13j ...  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j]
+ [ 1.71756188e-03-2.37874477e-10j  9.96660012e-01-1.38032860e-07j
+   1.61532649e-03-2.23715342e-10j ...  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j]
+ [ 2.84311823e-06-6.61665358e-13j  1.64979340e-03-3.83948556e-10j
+   9.96797452e-01-2.31979921e-07j ...  0.00000000e+00+0.00000000e+00j
+   0.00000000e+00+0.00000000e+00j  0.00000000e+00+0.00000000e+00j]
+ ...
+ [-0.00000000e+00+0.00000000e+00j -0.00000000e+00+0.00000000e+00j
+  -0.00000000e+00+0.00000000e+00j ...  9.99882991e-01-1.22034086e-06j
+   5.84351896e-05-7.13191947e-11j  3.41292655e-09-4.16542113e-15j]
+ [-0.00000000e+00+0.00000000e+00j -0.00000000e+00+0.00000000e+00j
+  -0.00000000e+00+0.00000000e+00j ...  5.84672916e-05-4.33954994e-11j
+   9.99883119e-01-7.42131646e-07j  5.83985039e-05-4.33444439e-11j]
+ [-0.00000000e+00+0.00000000e+00j -0.00000000e+00+0.00000000e+00j
+  -0.00000000e+00+0.00000000e+00j ...  3.41573946e-09-8.56309271e-16j
+   5.84145448e-05-1.46442423e-11j  9.99941570e-01-2.50680489e-07j]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">eig</span><span class="p">,</span> <span class="n">eigv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.io</span> <span class="kn">import</span> <span class="n">loadmat</span>
+<span class="n">mat_f</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;./data/LST_template.mat&#39;</span>
+<span class="n">mat_data</span> <span class="o">=</span> <span class="n">loadmat</span><span class="p">(</span><span class="n">mat_f</span><span class="p">)</span>
+
+<span class="n">mat_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;__header__&#39;, &#39;__version__&#39;, &#39;__globals__&#39;, &#39;A&#39;, &#39;B&#39;, &#39;Temperature&#39;, &#39;omega&#39;, &#39;y_phys&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from scipy.io import loadmat</span>
+<span class="c1"># lesgo_f = r&#39;./data/lesgo.mat&#39;</span>
+<span class="c1"># lesgo_vars = loadmat(lesgo_f)</span>
+<span class="c1"># print(lesgo_vars.keys())</span>
+<span class="c1"># eig = lesgo_vars[&#39;lambda&#39;][:, 0]</span>
+<span class="c1"># eigv = lesgo_vars[&#39;lesgo_v&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">eig</span><span class="p">)</span><span class="o">/</span><span class="mf">1e-5</span><span class="o">/</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">lst</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">lst</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lesgo&#39;</span><span class="p">)</span>
+<span class="c1"># ax.set_xlim(-0.1, 1.1)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\omega$&#39;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./imgs/omega.png&#39;</span><span class="p">,</span>  <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/02e4c960beb6d0621eb14a384218349c6e5a48c511131de24a8f60f4383dffbb.png" src="../../../_images/02e4c960beb6d0621eb14a384218349c6e5a48c511131de24a8f60f4383dffbb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lesgo_indset</span> <span class="o">=</span> <span class="p">[</span><span class="mi">68</span><span class="p">,</span> <span class="mi">69</span><span class="p">]</span>
+<span class="n">lst_indset</span> <span class="o">=</span> <span class="p">[</span><span class="mi">119</span><span class="p">,</span> <span class="mi">144</span><span class="p">]</span>
+
+
+<span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lesgo_indset</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    
+    <span class="n">scatter_set</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">scatter_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">lst</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">lst</span><span class="p">),</span> <span class="n">s</span><span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lesgo&#39;</span><span class="p">))</span>
+    <span class="n">scatter_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;omega&#39;</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;omega&#39;</span><span class="p">]),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LST&#39;</span><span class="p">))</span>
+    <span class="c1"># scatter_set.append(ax.scatter(np.real(mat_data[&#39;omega&#39;][120, 0]), np.imag(mat_data[&#39;omega&#39;][120, 0]), marker=&#39;x&#39;, color=&#39;indianred&#39;, label=&#39;LST discrete&#39;))</span>
+    <span class="c1"># scatter_set.append([ax.scatter(np.real(mat_data[&#39;omega&#39;][ind, 0]), np.imag(mat_data[&#39;omega&#39;][ind, 0]), s= 50, marker=&#39;x&#39;, color=&#39;indianred&#39;, label=&#39;LST boundary&#39;) for ind in lst_indset][0])</span>
+    <span class="c1"># scatter_set.append([ax.scatter(np.real(lst[ind]), np.imag(lst[ind]), s= 50, marker=&#39;x&#39;, color=&#39;navy&#39;, alpha=0.5, label=&#39;lesgo boundary&#39;) for ind in lesgo_indset][0])</span>
+    <span class="n">scatter_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;omega&#39;</span><span class="p">][</span><span class="n">lst_indset</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;omega&#39;</span><span class="p">][</span><span class="n">lst_indset</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">s</span><span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indianred&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LST point&#39;</span><span class="p">))</span>
+    <span class="n">scatter_set</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="n">lesgo_indset</span><span class="p">[</span><span class="n">ind</span><span class="p">]]),</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">lst</span><span class="p">[</span><span class="n">lesgo_indset</span><span class="p">[</span><span class="n">ind</span><span class="p">]]),</span> <span class="n">s</span><span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lesgo point&#39;</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">labs</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">get_label</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">scatter_set</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">scatter_set</span><span class="p">,</span> <span class="n">labs</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./imgs/full_omega_lesgo</span><span class="si">%.3i</span><span class="s1">_LST</span><span class="si">%.3i</span><span class="s1">.png&#39;</span> <span class="o">%</span><span class="p">(</span><span class="n">lesgo_indset</span><span class="p">[</span><span class="n">ind</span><span class="p">],</span> <span class="n">lst_indset</span><span class="p">[</span><span class="n">ind</span><span class="p">]),</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/c4727de9b7bd2a262c27d9aca2cb5d04bc82c0270a263652a3b5169233e3a565.png" src="../../../_images/c4727de9b7bd2a262c27d9aca2cb5d04bc82c0270a263652a3b5169233e3a565.png" />
+<img alt="../../../_images/f8fa142c53b70ce459d480c06ed7a373918cfa839372313b5125cb28b18d107e.png" src="../../../_images/f8fa142c53b70ce459d480c06ed7a373918cfa839372313b5125cb28b18d107e.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lst_indset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;omega&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">])</span><span class="o">&gt;-</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lst_indset</span><span class="p">)</span>
+<span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;omega&#39;</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;omega&#39;</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">])</span><span class="o">&gt;-</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[  3]
+ [  8]
+ [ 19]
+ [ 59]
+ [ 60]
+ [ 89]
+ [ 90]
+ [119]
+ [120]
+ [144]
+ [145]]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.43689419-0.12350871j, 0.74182772-0.25251338j,
+       0.69650517-0.17349471j, 0.95100985-0.05024926j,
+       0.61755299-0.27288752j, 0.83786341-0.16007931j,
+       0.52480465-0.2964694j , 0.92337223-0.07462662j,
+       0.61500598-0.20821216j, 0.5980823 -0.2379818j ,
+       0.80321021-0.28096161j])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lesgo_indset</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span><span class="o">&gt;-</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lesgo_indset</span><span class="p">)</span>
+<span class="n">lst</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span><span class="o">&gt;-</span><span class="mf">0.3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[68]
+ [69]
+ [70]
+ [71]
+ [72]
+ [77]]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.93084273-0.04644669j, 0.84359439-0.13380795j,
+       0.47591933-0.24673107j, 0.75648897-0.22143381j,
+       0.65686684-0.29957198j, 0.21131374-0.11728661j])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_phys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">384</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">dx</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.        , 0.01010101, 0.02020202, 0.03030303, 0.04040404,
+       0.05050505, 0.06060606, 0.07070707, 0.08080808, 0.09090909,
+       0.1010101 , 0.11111111, 0.12121212, 0.13131313, 0.14141414,
+       0.15151515, 0.16161616, 0.17171717, 0.18181818, 0.19191919,
+       0.2020202 , 0.21212121, 0.22222222, 0.23232323, 0.24242424,
+       0.25252525, 0.26262626, 0.27272727, 0.28282828, 0.29292929,
+       0.3030303 , 0.31313131, 0.32323232, 0.33333333, 0.34343434,
+       0.35353535, 0.36363636, 0.37373737, 0.38383838, 0.39393939,
+       0.4040404 , 0.41414141, 0.42424242, 0.43434343, 0.44444444,
+       0.45454545, 0.46464646, 0.47474747, 0.48484848, 0.49494949,
+       0.50505051, 0.51515152, 0.52525253, 0.53535354, 0.54545455,
+       0.55555556, 0.56565657, 0.57575758, 0.58585859, 0.5959596 ,
+       0.60606061, 0.61616162, 0.62626263, 0.63636364, 0.64646465,
+       0.65656566, 0.66666667, 0.67676768, 0.68686869, 0.6969697 ,
+       0.70707071, 0.71717172, 0.72727273, 0.73737374, 0.74747475,
+       0.75757576, 0.76767677, 0.77777778, 0.78787879, 0.7979798 ,
+       0.80808081, 0.81818182, 0.82828283, 0.83838384, 0.84848485,
+       0.85858586, 0.86868687, 0.87878788, 0.88888889, 0.8989899 ,
+       0.90909091, 0.91919192, 0.92929293, 0.93939394, 0.94949495,
+       0.95959596, 0.96969697, 0.97979798, 0.98989899, 1.        ,
+       1.01010101, 1.02020202, 1.03030303, 1.04040404, 1.05050505,
+       1.06060606, 1.07070707, 1.08080808, 1.09090909, 1.1010101 ,
+       1.11111111, 1.12121212, 1.13131313, 1.14141414, 1.15151515,
+       1.16161616, 1.17171717, 1.18181818, 1.19191919, 1.2020202 ,
+       1.21212121, 1.22222222, 1.23232323, 1.24242424, 1.25252525,
+       1.26262626, 1.27272727, 1.28282828, 1.29292929, 1.3030303 ,
+       1.31313131, 1.32323232, 1.33333333, 1.34343434, 1.35353535,
+       1.36363636, 1.37373737, 1.38383838, 1.39393939, 1.4040404 ,
+       1.41414141, 1.42424242, 1.43434343, 1.44444444, 1.45454545,
+       1.46464646, 1.47474747, 1.48484848, 1.49494949, 1.50505051,
+       1.51515152, 1.52525253, 1.53535354, 1.54545455, 1.55555556,
+       1.56565657, 1.57575758, 1.58585859, 1.5959596 , 1.60606061,
+       1.61616162, 1.62626263, 1.63636364, 1.64646465, 1.65656566,
+       1.66666667, 1.67676768, 1.68686869, 1.6969697 , 1.70707071,
+       1.71717172, 1.72727273, 1.73737374, 1.74747475, 1.75757576,
+       1.76767677, 1.77777778, 1.78787879, 1.7979798 , 1.80808081,
+       1.81818182, 1.82828283, 1.83838384, 1.84848485, 1.85858586,
+       1.86868687, 1.87878788, 1.88888889, 1.8989899 , 1.90909091,
+       1.91919192, 1.92929293, 1.93939394, 1.94949495, 1.95959596,
+       1.96969697, 1.97979798, 1.98989899, 2.        ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="n">lesgo_indset</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">LST_ind</span> <span class="o">=</span> <span class="n">lst_indset</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">LST_ind</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
+<span class="c1"># ax.plot(zc, eigv[:, ind], color=&#39;navy&#39;, linestyle=&#39;-.&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zc</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eigv</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eigv</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">])),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lesgo </span><span class="si">{</span><span class="n">lst</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_phys</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">][:,</span> <span class="n">LST_ind</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">][:,</span> <span class="n">LST_ind</span><span class="p">])),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indianred&#39;</span><span class="p">,)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LST %s&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;omega&#39;</span><span class="p">][</span><span class="n">LST_ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indianred&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;eigen-mode comparison&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./imgs/full_one_wave.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[68] [119]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+</pre></div>
+</div>
+<img alt="../../../_images/7659c3d277661a3a0c06afdbfcf4d5c9122da6b0418c0b65328e6299c1b978da.png" src="../../../_images/7659c3d277661a3a0c06afdbfcf4d5c9122da6b0418c0b65328e6299c1b978da.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="n">lesgo_indset</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">LST_ind</span> <span class="o">=</span> <span class="n">lst_indset</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">LST_ind</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
+<span class="c1"># ax.plot(zc, eigv[:, ind], color=&#39;navy&#39;, linestyle=&#39;-.&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zc</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eigv</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eigv</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">])),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lesgo </span><span class="si">{</span><span class="n">lst</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_phys</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">][:,</span> <span class="n">LST_ind</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">][:,</span> <span class="n">LST_ind</span><span class="p">])),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indianred&#39;</span><span class="p">,)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LST %s&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;omega&#39;</span><span class="p">][</span><span class="n">LST_ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indianred&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;eigen-mode comparison&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./imgs/full_two_wave.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[69] [144]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+</pre></div>
+</div>
+<img alt="../../../_images/317228ecb0b68156f63ada4adbf7a5baf1d9303e7f9603e771119b31ab4e8a58.png" src="../../../_images/317228ecb0b68156f63ada4adbf7a5baf1d9303e7f9603e771119b31ab4e8a58.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span> <span class="o">=</span> <span class="n">lesgo_indset</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">LST_ind</span> <span class="o">=</span> <span class="n">lst_indset</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ind</span><span class="p">,</span> <span class="n">LST_ind</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twiny</span><span class="p">()</span>
+<span class="c1"># ax.plot(zc, eigv[:, ind], color=&#39;navy&#39;, linestyle=&#39;-.&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zc</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eigv</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">eigv</span><span class="p">[:,</span> <span class="n">ind</span><span class="p">])),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;lesgo </span><span class="si">{</span><span class="n">lst</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_phys</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">][:,</span> <span class="n">LST_ind</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;Temperature&#39;</span><span class="p">][:,</span> <span class="n">LST_ind</span><span class="p">])),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indianred&#39;</span><span class="p">,)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LST %s&#39;</span> <span class="o">%</span> <span class="nb">str</span><span class="p">(</span><span class="n">mat_data</span><span class="p">[</span><span class="s1">&#39;omega&#39;</span><span class="p">][</span><span class="n">LST_ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indianred&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;eigen-mode comparison&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./imgs/full_one_wave2.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[70] [119]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+</pre></div>
+</div>
+<img alt="../../../_images/090721351aa79f6bebbd760ea2819b13a8e7ddb4d7bee2f5cd09ef9cb1472ced.png" src="../../../_images/090721351aa79f6bebbd760ea2819b13a8e7ddb4d7bee2f5cd09ef9cb1472ced.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/cases/LST"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lst">LST</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Zejian You
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,5 +1,9 @@
-# ERI
-This file is to record the LESGO project. Project meetings are logged in this [file](project_tracking.md).
+# Adjoint-enahnced LESGO
+This file is to record the Adjoint-enahnced LESGO project. Project meetings are logged in this [file](project_tracking.md).
+
+```{tableofcontents}
+```
+
 
 # Milestones
 - [ ] Finish LESGO Tutorial and organize in markdown notes (Feb 13, 2023)

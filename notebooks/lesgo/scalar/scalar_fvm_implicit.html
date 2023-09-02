@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>11.5. Implicit Method &#8212; Adjoint-enhanced LESGO</title>
+    <title>Implicit Method &#8212; Adjoint-enhanced LESGO</title>
   
   
   
@@ -67,8 +67,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lesgo/scalar/scalar_fvm_implicit';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="11.6. Fourier Transform in Finite Volume Method with modified wave number" href="fvm_fft.html" />
-    <link rel="prev" title="11.4. Scalar solver based on Finite Volume Method" href="scalar_fvm.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -134,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../../main.html">
+<a class="navbar-brand logo" href="../../../README.html">
   
   
   
@@ -154,42 +152,21 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../main.html">
-                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
+                <a class="reference internal" href="../../../README.html">
+                    Adjoint-enahnced LESGO
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO solver</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/FFT.html">6. Fast Fourier Transform</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../background/FFTW.html">FFTW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../background/MPI.html">MPI</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../setup.html">7. Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">1. Setup</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../velocity_solver.html">9. Velocity Solvers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../pressure_solver.html">10. Pressure Solvers</a></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="scalar_solver.html">11. Scalar Solvers</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="scalar_fvm.html">11.4. Scalar solver based on Finite Volume Method</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">11.5. Implicit Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../tests/scalar_validation_ex1.html">11.7. Validation case for scalar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../velocity_solver.html">3. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pressure_solver.html">4. Pressure Solvers</a></li>
 </ul>
-</li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Test Cases</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../cases/LST/Readme.html">5. Linear Stability Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
 <ul class="nav bd-sidenav">
@@ -198,6 +175,23 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../../project_tracking.html">Project Tracking</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../background/Adjoint_equation.html">6. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../background/numerical_methods/numerical_methods.html">7. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/Stability_Criterion.html">7.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/matrix.html">7.5. Tri-diagonal Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Steepest_Descent.html">8. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/subgrid-scale_model.html">9. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFT.html">10. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/MPI.html">MPI</a></li>
 </ul>
 
     </div>
@@ -239,6 +233,53 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lesgo/scalar/scalar_fvm_implicit.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
 
 
 
@@ -344,7 +385,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">11.5.1. Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
 </ul>
             </nav>
         </div>
@@ -357,10 +398,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section id="implicit-method">
-<h1><span class="section-number">11.5. </span>Implicit Method<a class="headerlink" href="#implicit-method" title="Permalink to this heading">#</a></h1>
-<p>The discretization equation of advection-diffusion equation based on finite volume method in Eq. <a class="reference internal" href="scalar_fvm.html#equation-eq-wang2019-fvm">(11.1)</a> <span id="id1">[<a class="reference internal" href="../velocity_solver.html#id15" title="Qi Wang, Yosuke Hasegawa, and Tamer A. Zaki. Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow. Journal of Fluid Mechanics, 870:316–352, July 2019. doi:10.1017/jfm.2019.241.">Wang <em>et al.</em>, 2019</a>]</span> is not very easy to satisfy the boundary condition in fourier space, so we include only <span class="math notranslate nohighlight">\(T^{n+1}\)</span> on the LHS instead of <span class="math notranslate nohighlight">\(\delta c\)</span>,</p>
+<h1>Implicit Method<a class="headerlink" href="#implicit-method" title="Permalink to this heading">#</a></h1>
+<p>The discretization equation of advection-diffusion equation based on finite volume method in Eq. <a class="reference internal" href="scalar_fvm.html#equation-eq-wang2019-fvm">()</a> <span id="id1">[<a class="reference internal" href="../velocity_solver.html#id19">Wang <em>et al.</em>, n.d.</a>]</span> is not very easy to satisfy the boundary condition in fourier space, so we include only <span class="math notranslate nohighlight">\(T^{n+1}\)</span> on the LHS instead of <span class="math notranslate nohighlight">\(\delta c\)</span>,</p>
 <div class="math notranslate nohighlight" id="equation-eq-scalar-implicit-fvm-governing">
-<span class="eqno">(11.2)<a class="headerlink" href="#equation-eq-scalar-implicit-fvm-governing" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">()<a class="headerlink" href="#equation-eq-scalar-implicit-fvm-governing" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align}
     \frac{T^{n+1}}{\Delta t} 
     - \frac{1}{2}\underbrace{\frac{1}{V}\left[\frac{1}{Pe}\iint_S (\boldsymbol{n} \cdot \nabla T^{n+1}) \mathrm{d}S\right]}_{{D}_{1}\mathbf{T}^{n+1}}
@@ -372,36 +413,26 @@ document.write(`
         + \underbrace{\frac{1}{V}\left[\int_V \phi \mathrm{d}V\right]^n}_{\phi^n}
 \end{align}
 \end{split}\]</div>
-<p>in which <span class="math notranslate nohighlight">\({D}_{1}\)</span> is the diffusion operator based on Fourier method with modified wave number of finite volume method in x and y direction and finite volume in z direction, <span class="math notranslate nohighlight">\({D}_{2}\)</span> is the diffusion operator based on finite volume method. Take Eq.<a class="reference internal" href="#equation-eq-scalar-implicit-fvm-governing">(11.2)</a> into Fourier space, we have</p>
+<p>in which <span class="math notranslate nohighlight">\({D}_{1}\)</span> is the diffusion operator based on Fourier method with modified wave number of finite volume method in x and y direction and finite volume in z direction, <span class="math notranslate nohighlight">\({D}_{2}\)</span> is the diffusion operator based on finite volume method. Take Eq.<a class="reference internal" href="#equation-eq-scalar-implicit-fvm-governing">()</a> into Fourier space, we have</p>
 <div class="math notranslate nohighlight" id="equation-eq-scalar-fvm-implicit-fourier">
-<span class="eqno">(11.3)<a class="headerlink" href="#equation-eq-scalar-fvm-implicit-fourier" title="Permalink to this equation">#</a></span>\[
+<span class="eqno">()<a class="headerlink" href="#equation-eq-scalar-fvm-implicit-fourier" title="Permalink to this equation">#</a></span>\[
 \begin{equation}
 a_{(i,j,k)}\widehat{T}^{n+1}_{(i, j, k-1)}+ b_{(i,j,k)}\delta\widehat{T}^{n+1}_{(i, j, k)} + c_{(i,j,k)}\widehat{T}_{(i, j, k+1)} = \widehat{R}_{(i,j,k)},
 \end{equation}
 \]</div>
 <p>in which,</p>
 <div class="math notranslate nohighlight" id="equation-eq-scalar-fvm-implicit-matrix-component">
-<span class="eqno">(11.4)<a class="headerlink" href="#equation-eq-scalar-fvm-implicit-matrix-component" title="Permalink to this equation">#</a></span>\[\begin{split}
+<span class="eqno">()<a class="headerlink" href="#equation-eq-scalar-fvm-implicit-matrix-component" title="Permalink to this equation">#</a></span>\[\begin{split}
 \begin{align}
-a_{(i, j, k)} &amp;=\frac{1}{\mathrm{d}\xi_{k}\mathrm{d}\xi_{kk}},\\
+a_{(i, j, k)} &amp;= \frac{1}{2 Pe} \frac{1}{\mathrm{d}\xi_{k}\mathrm{d}\xi_{kk}},\\
 b_{(i, j, k)} &amp;=\frac{1}{\Delta t} - \frac{1}{2Pe}\left(-\kappa_1^2x_i^2 - \kappa_2^2y_j^2 + \frac{1}{\mathrm{d}\xi_{k}(\mathrm{d}\xi_{kk}\mathrm{d}\xi_{kk+1})}\right),\\
 c_{(i, j, k)} &amp; = \frac{1}{\mathrm{d}\xi_{k}\mathrm{d}\xi_{kk+1}}.
 \end{align}
 \end{split}\]</div>
 <p>Don’t need to worry about the aliasing error since the advection term is discretized in explicit way and there is no non-linear term on the LHS.</p>
-<div class="proof definition admonition" id="definition:modified_wavenumber_fvm">
-<p class="admonition-title"><span class="caption-number">Definition 11.1 </span> (<strong>Modified Wavenumber</strong>)</p>
-<section class="definition-content" id="proof-content">
-<p>For the finite volume method, we have the corresponding modified wave number as</p>
-<div class="math notranslate nohighlight">
-\[
-\kappa^* = 2 \frac{|\sin{\frac{1}{2}\kappa \Delta x}|}{\Delta x}
-\]</div>
-<p>in which <span class="math notranslate nohighlight">\(\kappa\)</span> is the wave number for continuous Fourier transform (Details in <a class="reference internal" href="../../background/FFT.html#wavenumber-dft"><span class="std std-ref">here</span></a>).</p>
-</section>
-</div><div class="admonition-boundaries admonition">
+<div class="admonition-boundaries admonition">
 <p class="admonition-title">Boundaries</p>
-<p>Eq.<a class="reference internal" href="#equation-eq-scalar-fvm-implicit-fourier">(11.3)</a> need special care on the lower boundary and top boundary.</p>
+<p>Eq.<a class="reference internal" href="#equation-eq-scalar-fvm-implicit-fourier">()</a> need special care on the lower boundary and top boundary.</p>
 <p><strong>Lower boundary condition</strong></p>
 <p>At the lower boundary (<span class="math notranslate nohighlight">\(k=0\)</span>), we have</p>
 <div class="math notranslate nohighlight">
@@ -432,7 +463,7 @@ At the upper boundary (<span class="math notranslate nohighlight">\(k=N_z\)</spa
 \frac{\overline{T_k}}{\Delta t} - \frac{1}{2 Pe} \frac{1}{\dd \xi_k}\left[ \frac{\overline{T_{k+1}}  - \overline{T_k}}{\dd \xi_{kk+1}} - \frac{\overline{T_k} - \overline{T_{k-1}}}{\dd \xi_{kk}}\right] = 
 \]</div>
 <section id="validation">
-<h2><span class="section-number">11.5.1. </span>Validation<a class="headerlink" href="#validation" title="Permalink to this heading">#</a></h2>
+<h2>Validation<a class="headerlink" href="#validation" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -467,24 +498,6 @@ At the upper boundary (<span class="math notranslate nohighlight">\(k=N_z\)</spa
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="scalar_fvm.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">11.4. </span>Scalar solver based on Finite Volume Method</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="fvm_fft.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11.6. </span>Fourier Transform in Finite Volume Method with modified wave number</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -503,7 +516,7 @@ At the upper boundary (<span class="math notranslate nohighlight">\(k=N_z\)</spa
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">11.5.1. Validation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation">Validation</a></li>
 </ul>
   </nav></div>
 

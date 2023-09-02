@@ -1,0 +1,1024 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Temperature Diffusion Setup &#8212; Adjoint-enhanced LESGO</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"N": "\\mathbb{N}", "floor": ["\\lfloor#1\\rfloor", 1], "bmat": ["\\left[\\begin{array}"], "emat": ["\\end{array}\\right]"], "dd": "\\mathrm{d}", "ii": "\\mathrm{i}"}}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/cases/heat_transfer/validation_debug_flux';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../README.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/source_location.jpg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../../_static/source_location.jpg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    Adjoint-enahnced LESGO
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO solver</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lesgo/setup.html">1. Setup</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../lesgo/velocity_solver.html">3. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesgo/pressure_solver.html">4. Pressure Solvers</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Test Cases</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../LST/Readme.html">5. Linear Stability Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Paraview/readme.html">Paraview</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../project_tracking.html">Project Tracking</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../background/Adjoint_equation.html">6. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../background/numerical_methods/numerical_methods.html">7. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/Stability_Criterion.html">7.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../background/numerical_methods/matrix.html">7.5. Tri-diagonal Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/Steepest_Descent.html">8. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/subgrid-scale_model.html">9. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFT.html">10. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../background/MPI.html">MPI</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI/issues/new?title=Issue%20on%20page%20%2Fnotebooks/cases/heat_transfer/validation_debug_flux.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/notebooks/cases/heat_transfer/validation_debug_flux.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Temperature Diffusion Setup</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Temperature Diffusion Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-and-boundary-conditions">Initial and boundary conditions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-check">Stability check</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-validation">Velocity Validation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reynolds-stress-validation">Reynolds stress Validation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-validation">Temperature Validation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-normalization">Scalar Normalization</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">turb.lesgo_utils</span> <span class="kn">import</span> <span class="n">lesgo_data</span><span class="p">,</span> <span class="n">read_array_from_file</span><span class="p">,</span> <span class="n">write_array_to_file</span>
+<span class="kn">from</span> <span class="nn">pyutils</span> <span class="kn">import</span> <span class="n">plot_utils</span> <span class="k">as</span> <span class="n">pltutils</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="n">date_marker</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y_%m_</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">turb.lesgo_utils</span> <span class="kn">import</span> <span class="n">lesgo_data</span><span class="p">,</span> <span class="n">read_array_from_file</span><span class="p">,</span> <span class="n">write_array_to_file</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">pyutils</span> <span class="kn">import</span> <span class="n">plot_utils</span> <span class="k">as</span> <span class="n">pltutils</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;turb&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">root_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/51_validation_explicit&#39;</span>
+
+<span class="n">dims</span> <span class="o">=</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">]</span>
+<span class="n">domain</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">ntheta</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">ldata</span> <span class="o">=</span> <span class="n">lesgo_data</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">dims</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">,</span> <span class="n">ntheta</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">t_total</span> <span class="o">=</span> <span class="mi">360000</span>
+<span class="n">tstep</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">tt</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_total</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">tstep</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="temperature-diffusion-setup">
+<h1>Temperature Diffusion Setup<a class="headerlink" href="#temperature-diffusion-setup" title="Permalink to this heading">#</a></h1>
+<section id="initial-and-boundary-conditions">
+<h2>Initial and boundary conditions<a class="headerlink" href="#initial-and-boundary-conditions" title="Permalink to this heading">#</a></h2>
+<p>The setup of initial and boundary conditions in the original paper are
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+&amp;\theta_i (x, y, z, 0) = 0.5(1-y^2)\\
+&amp; \theta_i (x, -1, z, t) = 0, \quad \theta_i (x, 1, z, t) = 0
+\end{aligned}
+\)</span>$</p>
+<p>However, in LESGO, the normal direction is <span class="math notranslate nohighlight">\(z\)</span> instead of <span class="math notranslate nohighlight">\(y\)</span> and the simulation is running on a half channel. So that the transformed IC and BCs are
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+&amp;\theta_i (x, \hat{y}, \hat{z}, 0) = 0.5(2\hat{z} - \hat{z}^2 )\\
+&amp; \theta_i (x, \hat{y}, \hat{z}=0, t) = 0, \quad \frac{\partial \theta_i}{\partial \hat{z}} (x, \hat{y}, \hat{z}=1, t) = 0
+\end{aligned}
+\)</span><span class="math notranslate nohighlight">\(
+which is based on 
+\)</span><span class="math notranslate nohighlight">\(
+\hat{z} = y+1,\quad \forall y \in [-1, 0] \quad \&amp; \quad \hat{y} = z, \quad\forall z \in [0, \pi].
+\)</span>$</p>
+</section>
+</section>
+<section id="source">
+<h1>Source<a class="headerlink" href="#source" title="Permalink to this heading">#</a></h1>
+<p>According to Kim’s work<span id="id1">[<a class="reference internal" href="../../lesgo/velocity_solver.html#id11">Kim and Moin, n.d.</a>]</span>, they also has a continuous source term inside the channel,
+$<span class="math notranslate nohighlight">\(
+\begin{equation}
+Q_i = \frac{2}{\text{Re}\text{Pr}_i}.
+\end{equation}
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Pr_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.71</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">Re</span> <span class="o">=</span> <span class="mi">180</span>
+<span class="n">RePr</span> <span class="o">=</span> <span class="n">Re</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Pr_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read template config</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">_read_lesgoconf</span><span class="p">(</span><span class="s1">&#39;/home/zyou6474/Projects/lesgo_eri/src/lesgo.conf&#39;</span><span class="p">)</span>
+
+<span class="c1"># Read previous velocity field as Initial Condition</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">read_inputs</span><span class="p">(</span><span class="s1">&#39;/home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/inputs/turbulence_128_128_64&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Use parabolic velocity profile as IC</span>
+<span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">zc</span> <span class="o">=</span> <span class="n">ldata</span><span class="o">.</span><span class="n">coords</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xc</span><span class="p">,</span> <span class="n">yc</span><span class="p">,</span> <span class="n">zc</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">zz</span> <span class="o">-</span> <span class="n">zz</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Create single wavenumber theta in each layer as Initial Condition</span>
+<span class="n">thetaic_shape</span> <span class="o">=</span> <span class="n">dims</span><span class="o">*</span><span class="mi">1</span>
+<span class="n">thetaic_shape</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ntheta</span><span class="p">)</span>
+<span class="n">thetaic_shape</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">thetaic_shape</span><span class="p">)</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta_ic&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">thetaic_shape</span><span class="p">)</span> 
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ntheta</span><span class="p">):</span>
+    <span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta_ic&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta</span>
+    
+    
+<span class="n">source</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">Pr</span> <span class="ow">in</span> <span class="n">Pr_list</span><span class="p">:</span>
+    <span class="n">source</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zz</span><span class="o">*</span><span class="mi">0</span> <span class="o">+</span> <span class="mi">2</span><span class="o">/</span><span class="n">Re</span><span class="o">/</span><span class="n">Pr</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%.4f</span><span class="s1"> amount of scalar is generated at each point&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">Re</span><span class="o">/</span><span class="n">Pr</span><span class="p">))</span>
+
+<span class="n">ldata</span><span class="o">.</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;SCALAR&#39;</span><span class="p">][</span><span class="s1">&#39;source_opt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span>
+
+<span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="n">thetaic_shape</span><span class="p">)</span> 
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ntheta</span><span class="p">):</span>
+    <span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;source&#39;</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">source</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+<span class="c1"># Switch off Scalar source</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">_fnames</span><span class="p">(</span><span class="n">fmt_ntheta</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%.3i</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">_write_conf</span><span class="p">(</span><span class="s1">&#39;/home/zyou6474/Projects/ERI/notebooks/cases/heat_transfer/configs/config_Kims_</span><span class="si">%s</span><span class="s1">.ini&#39;</span> <span class="o">%</span> <span class="n">date_marker</span><span class="p">)</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">write_inputs</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DOMAIN
+MODEL
+TIME
+FLOW_COND
+OUTPUT
+SCALAR
+ADJOINT
+LOG
+LEVEL_SET
+TURBINES
+Configs is loaded from /home/zyou6474/Projects/lesgo_eri/src/lesgo.conf
+0.1111 amount of scalar is generated at each point
+0.0156 amount of scalar is generated at each point
+0.0056 amount of scalar is generated at each point
+Configs is written in /home/zyou6474/Projects/ERI/notebooks/cases/heat_transfer/configs/config_Kims_2023_07_21.ini
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/51_validation_explicit/inputs/u_velocity.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/51_validation_explicit/inputs/v_velocity.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/51_validation_explicit/inputs/w_velocity.IC
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/51_validation_explicit/inputs/theta.IC.001
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/51_validation_explicit/inputs/theta.IC.002
+write data into /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/51_validation_explicit/inputs/theta.IC.003
+Write configs in /home/zyou6474/Projects/lesgo_adjoint_tutorial_bundle/tests/51_validation_explicit/inputs/lesgo.conf
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">zc</span><span class="p">,</span> <span class="n">theta</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;T&#39;)
+</pre></div>
+</div>
+<img alt="../../../_images/11f19919c1b3ca9618c229512d7366e60f025f497bacceb5eb2d3fc4de148894.png" src="../../../_images/11f19919c1b3ca9618c229512d7366e60f025f497bacceb5eb2d3fc4de148894.png" />
+</div>
+</div>
+</section>
+<section id="stability-check">
+<h1>Stability check<a class="headerlink" href="#stability-check" title="Permalink to this heading">#</a></h1>
+<p>Plot friction Reynolds number <span class="math notranslate nohighlight">\(Re_{\tau}\)</span> in time series to check if the simulation is stabilized,
+$<span class="math notranslate nohighlight">\(
+Re_{\tau} = \frac{u_{\tau}\delta}{\nu} = \frac{\delta}{\delta_{\nu}},
+\)</span><span class="math notranslate nohighlight">\(
+which is determined by the characteristic velocity scale -- friction velocity \)</span>u_{\tau} = \sqrt{\frac{\tau_{w}}{\rho}}<span class="math notranslate nohighlight">\( and characteristic length scale -- viscous length scale \)</span>\delta_{\nu} = \frac{\nu}{u_{\tau}}$. <a class="footnote-reference brackets" href="#wall-shear-stress" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>In our setting, the characteristic velocity scale <span class="math notranslate nohighlight">\(u_{\tau}=1m/s\)</span> (u_star in <code class="docutils literal notranslate"><span class="pre">lesgo.conf</span></code>), characteristic length scale <span class="math notranslate nohighlight">\(\delta= 1m\)</span> (z_i in <code class="docutils literal notranslate"><span class="pre">lesgo.conf</span></code>) and molecular viscosity <span class="math notranslate nohighlight">\(\nu = 0.00556 m^2/s\)</span> (nu_molec in <code class="docutils literal notranslate"><span class="pre">lesgo.conf</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">u_tau</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">z_i</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">nu</span> <span class="o">=</span> <span class="mf">0.00556</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Since LESGO’s streamwise velocity is located at center of uv-grid, so that we calculate the velocity gradient by
+$<span class="math notranslate nohighlight">\(
+\left( \frac{\mathrm{d} \langle U\rangle}{\mathrm{d} y} \right)_{y=0} = U_{k=1} / z_{k=1}
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check Re_tau</span>
+<span class="n">Re_tau</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t_ind</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tt</span><span class="p">):</span>
+    <span class="n">ldata</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">u_average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">u_tau_actual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">nu</span> <span class="o">*</span> <span class="p">(</span><span class="n">u_average</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">ldata</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">Re_tau</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">u_tau_actual</span><span class="o">*</span><span class="n">z_i</span> <span class="o">/</span> <span class="n">nu</span><span class="p">)</span>
+    <span class="n">delta_nu</span> <span class="o">=</span> <span class="n">nu</span> <span class="o">/</span> <span class="n">u_tau_actual</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">Re_tau</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time steps&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$Re_\tau$&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;$Re_\\tau$&#39;)
+</pre></div>
+</div>
+<img alt="../../../_images/6f754c5e57dd6c64697ecd2ea2669c65cb6054ecfd1f810d44696a660c682672.png" src="../../../_images/6f754c5e57dd6c64697ecd2ea2669c65cb6054ecfd1f810d44696a660c682672.png" />
+</div>
+</div>
+<p>We could see that the friction Reynolds number is stabilized around 180.</p>
+</section>
+<section id="velocity-validation">
+<h1>Velocity Validation<a class="headerlink" href="#velocity-validation" title="Permalink to this heading">#</a></h1>
+<p>Validate the velocity profile with previous research data from <span id="id3">[<a class="reference internal" href="../../lesgo/velocity_solver.html#id14">Lee and Moser, n.d.</a>]</span>. Data can be downloaded from this <a class="reference external" href="https://turbulence.oden.utexas.edu/data/MKM/chan180/profiles/chan180.means">link</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">valid_vf</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;./chan180.means&#39;</span>
+
+<span class="c1"># Read in validate velocity</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">valid_vf</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;##&#39;</span><span class="p">):</span>
+            <span class="n">keys</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">):</span>
+            <span class="n">tmp</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span>
+<span class="n">chan180</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">keys</span><span class="p">):</span>
+    <span class="n">chan180</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tmp</span><span class="p">)[:,</span> <span class="n">ind</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;y&#39;, &#39;y+&#39;, &#39;Umean&#39;, &#39;dUmean/dy&#39;, &#39;Wmean&#39;, &#39;dWmean/dy&#39;, &#39;Pmean&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">delta_nu</span><span class="p">,</span> <span class="n">u_average</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;lesgo&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">chan180</span><span class="p">[</span><span class="s1">&#39;y+&#39;</span><span class="p">],</span> <span class="n">chan180</span><span class="p">[</span><span class="s1">&#39;Umean&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkcyan&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;chan180&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$z^+$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$U^+$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1691f1ab00&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/756f583c1998e6e33341bcc00f884892a21f81426120be6fb1f32393faa9ec63.png" src="../../../_images/756f583c1998e6e33341bcc00f884892a21f81426120be6fb1f32393faa9ec63.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="n">pltutils</span><span class="o">.</span><span class="n">contour_channel</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">coords</span><span class="p">,</span> <span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;u&#39;</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">turbo</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x400 with 4 Axes&gt;,
+ [&lt;Axes: xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;,
+  &lt;Axes: xlabel=&#39;x&#39;, ylabel=&#39;z&#39;&gt;,
+  &lt;Axes: xlabel=&#39;y&#39;, ylabel=&#39;z&#39;&gt;])
+</pre></div>
+</div>
+<img alt="../../../_images/174703f89ec6152208e9bcf5f7bf3eb2e52afb75d6d056800fc16355913df15f.png" src="../../../_images/174703f89ec6152208e9bcf5f7bf3eb2e52afb75d6d056800fc16355913df15f.png" />
+</div>
+</div>
+</section>
+<section id="reynolds-stress-validation">
+<h1>Reynolds stress Validation<a class="headerlink" href="#reynolds-stress-validation" title="Permalink to this heading">#</a></h1>
+<p>Validate the Reynolds stress profile with previous research data from <span id="id4">[<a class="reference internal" href="../../lesgo/velocity_solver.html#id14">Lee and Moser, n.d.</a>]</span>. Data can be downloaded from this <a class="reference external" href="https://turbulence.oden.utexas.edu/data/MKM/chan180/profiles/chan180.reystress">link</a>.</p>
+<p>[Working On]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ldata</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="n">t_total</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">pyutils.plot_utils</span> <span class="kn">import</span> <span class="n">contour_channel</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="n">contour_channel</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">coords</span><span class="p">,</span> <span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cm</span><span class="o">.</span><span class="n">pink_r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 800x400 with 4 Axes&gt;,
+ [&lt;Axes: xlabel=&#39;x&#39;, ylabel=&#39;y&#39;&gt;,
+  &lt;Axes: xlabel=&#39;x&#39;, ylabel=&#39;z&#39;&gt;,
+  &lt;Axes: xlabel=&#39;y&#39;, ylabel=&#39;z&#39;&gt;])
+</pre></div>
+</div>
+<img alt="../../../_images/0cb916dda53b7a17f38b4c29b7cf421d0010f1698a1f3aac61f6d5eef9d8876d.png" src="../../../_images/0cb916dda53b7a17f38b4c29b7cf421d0010f1698a1f3aac61f6d5eef9d8876d.png" />
+</div>
+</div>
+</section>
+<section id="temperature-validation">
+<h1>Temperature Validation<a class="headerlink" href="#temperature-validation" title="Permalink to this heading">#</a></h1>
+<p>Validation based on previous literature<span id="id5">[<a class="reference internal" href="../../lesgo/velocity_solver.html#id11">Kim and Moin, n.d.</a>]</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_f</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/home/zyou6474/Projects/ERI/notebooks/lesgo/tests/Kim_data.txt&#39;</span>
+
+<span class="n">z_kim</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">T_kim</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">tmp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">x_tmp</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_f</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;%DATA&#39;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span> <span class="n">T_kim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span> <span class="n">z_kim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_tmp</span><span class="p">)</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">x_tmp</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">continue</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="p">)</span>
+        <span class="n">x_tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">tmp</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="n">T_kim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tmp</span><span class="p">);</span> <span class="n">z_kim</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_tmp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="scalar-normalization">
+<h2>Scalar Normalization<a class="headerlink" href="#scalar-normalization" title="Permalink to this heading">#</a></h2>
+<p>Passive scalars are non-dimensionalized by the wall surface scalar flux defined as
+$<span class="math notranslate nohighlight">\(
+\theta_{\tau} = \frac{\dot{q}_w}{\rho c_p u_\tau} = \frac{k \frac{\partial \theta}{\partial z}|_w}{\rho c_p u_\tau} = \frac{\alpha \frac{\partial \theta}{\partial z}|_w}{u_\tau},
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\rho<span class="math notranslate nohighlight">\( and \)</span>c_p<span class="math notranslate nohighlight">\( are the fluid density and the specific heat at constant pressure respectively, and \)</span>\alpha = k/(\rho c_p)$. <a class="footnote-reference brackets" href="#thermal-diffusivity" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></p>
+<p>The surface heat flux <span class="math notranslate nohighlight">\(\theta_\tau\)</span> is sometimes referred as the friction temperature in analogy to the friction velocity, <span class="math notranslate nohighlight">\(u_\tau\)</span>. Furthermore, the non-dimensionalized passive scalar is <span class="math notranslate nohighlight">\(\theta^+ = \theta / \theta_{\tau}\)</span>.</p>
+<p>In order to see if the scalar field is stabilized, maybe we could also plot the variation of friction temperature as a reference.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta_tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">ntheta</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">tt</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">t_ind</span><span class="p">,</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tt</span><span class="p">):</span>
+    <span class="n">ldata</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">nk</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">ntheta</span><span class="p">):</span>
+        <span class="n">theta_average</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">][</span><span class="n">nk</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">theta_gradient</span> <span class="o">=</span> <span class="n">theta_average</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">zc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">theta_tau</span><span class="p">[</span><span class="n">nk</span><span class="p">,</span> <span class="n">t_ind</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">theta_gradient</span><span class="o">/</span><span class="n">RePr</span><span class="p">[</span><span class="n">nk</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tt</span><span class="p">,</span> <span class="n">theta_tau</span><span class="p">[</span><span class="n">nk</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Pr = </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">Pr_list</span><span class="p">[</span><span class="n">nk</span><span class="p">])</span> <span class="k">for</span> <span class="n">nk</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">ntheta</span><span class="p">)]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_\tau$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1691d3c7f0&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/bd48b2e7b9d7261e5ae5dc38d8afa68c6430eb12a9d86ab3ab6604c5244729bb.png" src="../../../_images/bd48b2e7b9d7261e5ae5dc38d8afa68c6430eb12a9d86ab3ab6604c5244729bb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">zc</span><span class="p">)))</span>
+<span class="n">theta_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">theta</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="k">for</span> <span class="n">nk</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">ntheta</span><span class="p">):</span>
+    <span class="n">theta_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">][</span><span class="n">nk</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">theta_gradient</span> <span class="o">=</span> <span class="n">theta_bar</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">zc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">theta_gradient</span><span class="p">)</span>
+
+    <span class="n">theta_tau</span> <span class="o">=</span> <span class="n">theta_gradient</span><span class="o">/</span><span class="n">RePr</span><span class="p">[</span><span class="n">nk</span><span class="p">]</span>
+
+    <span class="n">z_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">z_plus</span><span class="p">,</span> <span class="n">zc</span><span class="o">*</span><span class="n">Re</span><span class="p">))</span>
+    <span class="n">theta_plus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">theta_plus</span><span class="p">,</span> <span class="n">theta_bar</span> <span class="o">/</span><span class="n">theta_tau</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.8132907220288987
+6.4562584968889265
+11.276685689058068
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">ntheta</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">nk</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">ntheta</span><span class="p">):</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">nk</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">z_plus</span><span class="p">[</span><span class="n">nk</span><span class="p">],</span> <span class="n">theta_plus</span><span class="p">[</span><span class="n">nk</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LESGO Pr=</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">Pr_list</span><span class="p">[</span><span class="n">nk</span><span class="p">])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">nk</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z_kim</span><span class="p">[</span><span class="n">nk</span><span class="p">],</span> <span class="n">T_kim</span><span class="p">[</span><span class="n">nk</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Kim Pr=</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">Pr_list</span><span class="p">[</span><span class="n">nk</span><span class="p">])</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="n">nk</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">nk</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$z^+$&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">nk</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$T^+$&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">nk</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+    <span class="c1"># axes[nk].set_yscale(&#39;log&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/809bb782bf324ac2e26a530daaccedaadd8ba238b375020077c9439c0814ef24.png" src="../../../_images/809bb782bf324ac2e26a530daaccedaadd8ba238b375020077c9439c0814ef24.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">interpolate</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">interpolate</span><span class="o">.</span><span class="n">interp1d</span><span class="p">(</span><span class="n">z_kim</span><span class="p">[</span><span class="n">nk</span><span class="p">],</span> <span class="n">T_kim</span><span class="p">[</span><span class="n">nk</span><span class="p">])</span>
+<span class="n">nk</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">theta_plus</span><span class="p">[</span><span class="n">nk</span><span class="p">][</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">f</span><span class="p">(</span><span class="n">z_plus</span><span class="p">[</span><span class="n">nk</span><span class="p">][</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f168ed7ab60&gt;]
+</pre></div>
+</div>
+<img alt="../../../_images/28dbc6f2207c9734f207813bd905cc83cdf5d1369d9f3ed62447d9d40763e974.png" src="../../../_images/28dbc6f2207c9734f207813bd905cc83cdf5d1369d9f3ed62447d9d40763e974.png" />
+</div>
+</div>
+<p>Would it because of wrong theta gradient?
+–&gt; The ratio is different so that the entire profile is wrong.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nk</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="n">t_ind</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+    <span class="c1"># axes[nk].scatter(z_plus[nk], theta_plus[nk], s= 12, marker=&#39;x&#39;, color=&#39;navy&#39;, alpha=0.5, label=&#39;LESGO Pr=%.2f&#39; % Pr_list[nk])</span>
+    <span class="c1"># axes[nk].plot(z_kim[nk], T_kim[nk], linestyle=&#39;-.&#39;, color=&#39;red&#39;, alpha=0.5, label=&#39;Kim Pr=%.2f&#39; % Pr_list[nk])</span>
+
+    <span class="c1"># axes[nk].legend(frameon=False)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$z^+$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$T^+$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="c1"># ax.set_yscale(&#39;log&#39;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">Re</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">][</span><span class="n">nk</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">RePr</span><span class="p">[</span><span class="n">nk</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">s</span><span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;IC&#39;</span> <span class="p">)</span>
+<span class="n">ldata</span><span class="o">.</span><span class="n">read_data</span><span class="p">(</span><span class="n">t_ind</span><span class="o">=</span><span class="n">t_total</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">Re</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">][</span><span class="n">nk</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="n">RePr</span><span class="p">[</span><span class="n">nk</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">s</span><span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;t_ind = </span><span class="si">%.0e</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">t_total</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">z_kim</span><span class="p">[</span><span class="n">nk</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">T_kim</span><span class="p">[</span><span class="n">nk</span><span class="p">]),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Kim&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Pr = </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">Pr_list</span><span class="p">[</span><span class="n">nk</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f16910f4f70&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/ba9d923219b7295b8d88eddeb678bd56bac34e40154496ca2207e2cbfeebde28.png" src="../../../_images/ba9d923219b7295b8d88eddeb678bd56bac34e40154496ca2207e2cbfeebde28.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;theta&#39;</span><span class="p">][</span><span class="n">nk</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Pr = </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">Pr_list</span><span class="p">[</span><span class="n">nk</span><span class="p">])</span> <span class="k">for</span> <span class="n">nk</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ldata</span><span class="o">.</span><span class="n">ntheta</span><span class="p">)]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f16910ab490&gt;
+</pre></div>
+</div>
+<img alt="../../../_images/9f656aade177196aedc98384b57b95648f0783208fe04d5a8a47c4da427d570f.png" src="../../../_images/9f656aade177196aedc98384b57b95648f0783208fe04d5a8a47c4da427d570f.png" />
+</div>
+</div>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="wall-shear-stress" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Wall shear stress <span class="math notranslate nohighlight">\(\tau_w = \rho\nu \left( \frac{\mathrm{d} \langle U\rangle}{\mathrm{d} y} \right)_{y=0}\)</span> .</p>
+</aside>
+<aside class="footnote brackets" id="thermal-diffusivity" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">2</a><span class="fn-bracket">]</span></span>
+<p>Thermal diffusivity <span class="math notranslate nohighlight">\(\alpha\)</span> satisfies <span class="math notranslate nohighlight">\(Pr = \nu / \alpha\)</span>.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/cases/heat_transfer"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Temperature Diffusion Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-and-boundary-conditions">Initial and boundary conditions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#source">Source</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-check">Stability check</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-validation">Velocity Validation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reynolds-stress-validation">Reynolds stress Validation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#temperature-validation">Temperature Validation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-normalization">Scalar Normalization</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Zejian You
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

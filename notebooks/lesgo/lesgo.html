@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>8.2. Lesgo Tutorial &#8212; Adjoint-enhanced LESGO</title>
+    <title>2.2. Lesgo Tutorial &#8212; Adjoint-enhanced LESGO</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/lesgo/lesgo';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="8.4. LESGO configuration" href="LESGO_configuration.html" />
-    <link rel="prev" title="7. Setup" href="setup.html" />
+    <link rel="next" title="2.4. LESGO configuration" href="LESGO_configuration.html" />
+    <link rel="prev" title="1. Setup" href="setup.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -132,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="../main.html">
+<a class="navbar-brand logo" href="../../README.html">
   
   
   
@@ -152,42 +152,21 @@ const thebe_selector_output = ".output, .cell_output"
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../main.html">
-                    Spatial reconstruction of steady scalar sources from remote measurements in turbulent flow
+                <a class="reference internal" href="../../README.html">
+                    Adjoint-enahnced LESGO
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../background/Adjoint_equation.html">1. Adjoint Advection-Diffusion Equation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../background/numerical_methods/numerical_methods.html">2. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/Stability_Criterion.html">2.4. Stability Criterion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/matrix.html">2.5. Tri-diagonal Matrix</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../background/Steepest_Descent.html">3. Method of The Steepest Descent</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/subgrid-scale_model.html">4. Subgrid-scale model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/Uncertainty_analysis.html">5. Uncertainty analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/FFT.html">6. Fast Fourier Transform</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../background/FFTW.html">FFTW</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../background/MPI.html">MPI</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO tutorial</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">LESGO solver</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="setup.html">7. Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">1. Setup</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="velocity_solver.html">9. Velocity Solvers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pressure_solver.html">10. Pressure Solvers</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="scalar/scalar_solver.html">11. Scalar Solvers</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="scalar/scalar_fvm.html">11.4. Scalar solver based on Finite Volume Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scalar/scalar_fvm_implicit.html">11.5. Implicit Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="scalar/fvm_fft.html">11.6. Fourier Transform in Finite Volume Method with modified wave number</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tests/scalar_validation_ex1.html">11.7. Validation case for scalar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="velocity_solver.html">3. Velocity Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pressure_solver.html">4. Pressure Solvers</a></li>
 </ul>
-</li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Test Cases</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../cases/LST/Readme.html">5. Linear Stability Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Post-processing softwares</span></p>
 <ul class="nav bd-sidenav">
@@ -196,6 +175,23 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Project tracking</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../project_tracking.html">Project Tracking</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Backgrounds</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../background/Adjoint_equation.html">6. Adjoint Advection-Diffusion Equation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../background/numerical_methods/numerical_methods.html">7. Numerical Methods for PDEs</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/Stability_Criterion.html">7.4. Stability Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../background/numerical_methods/matrix.html">7.5. Tri-diagonal Matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../background/Steepest_Descent.html">8. Method of The Steepest Descent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/subgrid-scale_model.html">9. Subgrid-scale model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/FFT.html">10. Fast Fourier Transform</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../background/FFTW.html">FFTW</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../background/MPI.html">MPI</a></li>
 </ul>
 
     </div>
@@ -237,6 +233,53 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="header-article-item">
 
 <div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Advanced-Data-Assimilation/ERI/issues/new?title=Issue%20on%20page%20%2Fnotebooks/lesgo/lesgo.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
 
 
 
@@ -342,42 +385,42 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">8.2. Lesgo Tutorial</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-setup">8.2.1. 1. Domain Setup</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">8.2.1.1. 1.1 Parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">8.2.1.2. 1.1 Boundary Conditions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-conditions">8.2.1.3. Initial Conditions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.2. Lesgo Tutorial</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-setup">2.2.1. 1. Domain Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">2.2.1.1. 1.1 Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">2.2.1.2. 1.1 Boundary Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-conditions">2.2.1.3. Initial Conditions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-structure">8.2.2. 2. Code Structure</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-f90">8.2.2.1. 2.1 main.f90</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-f90">8.2.2.2. 2.2 fft.f90</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives-f90">8.2.2.3. 2.3 derivatives.f90</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutine-ddx-f-dfdx-lbz">8.2.2.3.1. subroutine ddx(f,dfdx,lbz)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-structure">2.2.2. 2. Code Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-f90">2.2.2.1. 2.1 main.f90</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-f90">2.2.2.2. 2.2 fft.f90</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives-f90">2.2.2.3. 2.3 derivatives.f90</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutine-ddx-f-dfdx-lbz">2.2.2.3.1. subroutine ddx(f,dfdx,lbz)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-f90">8.2.2.4. 2.10 scalar.f90</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutine-to-big-a-a-big">8.2.2.4.1. subroutine to_big(a, a_big)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#appendices-libraries">8.3. Appendices: Libraries</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-fftw">8.3.1. A. FFTW</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-reference">8.3.1.1. A.1 Reference</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-parameters">8.3.1.2. A.2 Parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-3-functions">8.3.1.3. A.3 Functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dfftw-plan-dft-r2c-2d">8.3.1.3.1. dfftw_plan_dft_r2c_2d</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dfftw-execute-dft-r2c">8.3.1.3.2. dfftw_execute_dft_r2c</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-f90">2.2.2.4. 2.10 scalar.f90</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutine-to-big-a-a-big">2.2.2.4.1. subroutine to_big(a, a_big)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-openmp">8.3.2. B. OpenMP</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1-reference">8.3.2.1. B.1 Reference</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-2-parameters">8.3.2.2. B.2 Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#appendices-libraries">2.3. Appendices: Libraries</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-fftw">2.3.1. A. FFTW</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-reference">2.3.1.1. A.1 Reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-parameters">2.3.1.2. A.2 Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-3-functions">2.3.1.3. A.3 Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dfftw-plan-dft-r2c-2d">2.3.1.3.1. dfftw_plan_dft_r2c_2d</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dfftw-execute-dft-r2c">2.3.1.3.2. dfftw_execute_dft_r2c</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-openmp">2.3.2. B. OpenMP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1-reference">2.3.2.1. B.1 Reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-2-parameters">2.3.2.2. B.2 Parameters</a></li>
 </ul>
 </li>
 </ul>
@@ -395,7 +438,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="lesgo-tutorial">
-<h1><span class="section-number">8.2. </span>Lesgo Tutorial<a class="headerlink" href="#lesgo-tutorial" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">2.2. </span>Lesgo Tutorial<a class="headerlink" href="#lesgo-tutorial" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p><span class="xref myst">Lesgo Tutorial</span></p>
 <ul>
@@ -448,13 +491,13 @@ document.write(`
 </li>
 </ul>
 <section id="domain-setup">
-<h2><span class="section-number">8.2.1. </span>1. Domain Setup<a class="headerlink" href="#domain-setup" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.2.1. </span>1. Domain Setup<a class="headerlink" href="#domain-setup" title="Permalink to this heading">#</a></h2>
 <section id="parameters">
-<h3><span class="section-number">8.2.1.1. </span>1.1 Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.1.1. </span>1.1 Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">#</a></h3>
 <p><strong>lbz</strong> – overlap level for MPI transfer, equal to 0 when MPI is turn on</p>
 </section>
 <section id="boundary-conditions">
-<h3><span class="section-number">8.2.1.2. </span>1.1 Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.1.2. </span>1.1 Boundary Conditions<a class="headerlink" href="#boundary-conditions" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Inflow</p></li>
 <li><p>Outflow</p></li>
@@ -463,65 +506,65 @@ document.write(`
 </ul>
 </section>
 <section id="initial-conditions">
-<h3><span class="section-number">8.2.1.3. </span>Initial Conditions<a class="headerlink" href="#initial-conditions" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.1.3. </span>Initial Conditions<a class="headerlink" href="#initial-conditions" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li></li>
 </ul>
 </section>
 </section>
 <section id="code-structure">
-<h2><span class="section-number">8.2.2. </span>2. Code Structure<a class="headerlink" href="#code-structure" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.2.2. </span>2. Code Structure<a class="headerlink" href="#code-structure" title="Permalink to this heading">#</a></h2>
 <section id="main-f90">
-<h3><span class="section-number">8.2.2.1. </span>2.1 main.f90<a class="headerlink" href="#main-f90" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.2.1. </span>2.1 main.f90<a class="headerlink" href="#main-f90" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="fft-f90">
-<h3><span class="section-number">8.2.2.2. </span>2.2 fft.f90<a class="headerlink" href="#fft-f90" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.2.2. </span>2.2 fft.f90<a class="headerlink" href="#fft-f90" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://math.jhu.edu/~feilu/notes/DealiasingFFT.pdf">Dealiasing FFT</a></p></li>
 </ul>
 </section>
 <section id="derivatives-f90">
-<h3><span class="section-number">8.2.2.3. </span>2.3 derivatives.f90<a class="headerlink" href="#derivatives-f90" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.2.3. </span>2.3 derivatives.f90<a class="headerlink" href="#derivatives-f90" title="Permalink to this heading">#</a></h3>
 <section id="subroutine-ddx-f-dfdx-lbz">
-<h4><span class="section-number">8.2.2.3.1. </span>subroutine ddx(f,dfdx,lbz)<a class="headerlink" href="#subroutine-ddx-f-dfdx-lbz" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">2.2.2.3.1. </span>subroutine ddx(f,dfdx,lbz)<a class="headerlink" href="#subroutine-ddx-f-dfdx-lbz" title="Permalink to this heading">#</a></h4>
 <p>This subroutine computes the partial derivative of f with respect to x using spectral decomposition.</p>
 </section>
 </section>
 <section id="scalar-f90">
-<h3><span class="section-number">8.2.2.4. </span>2.10 scalar.f90<a class="headerlink" href="#scalar-f90" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.2.2.4. </span>2.10 scalar.f90<a class="headerlink" href="#scalar-f90" title="Permalink to this heading">#</a></h3>
 <p><span style="color:red"> Check the BCs for theta</span></p>
 <div class="highlight-Fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &lt;scalars.f90&gt;</span>
 <span class="c">! Bottom of domain</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">coord</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">    </span><span class="n">RHS_big</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">const</span><span class="o">*</span><span class="p">(</span><span class="n">u_big</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dTdx_big</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w">                       </span><span class="p">&amp;</span>
-<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">v_big</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dTdy_big</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w">                                         </span><span class="p">&amp;</span>
-<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5_rprec</span><span class="o">*</span><span class="n">w_big</span><span class="p">(:,:,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">dTdz_big</span><span class="p">(:,:,</span><span class="mi">2</span><span class="p">))</span>
-<span class="k">end if</span>
+<span class="k">    </span><span class="n">RHS_big</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">const</span><span class="o">*</span><span class="p">(</span><span class="n">u_big</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dTdx_big</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w">                       </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">v_big</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dTdy_big</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w">                                         </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5_rprec</span><span class="o">*</span><span class="n">w_big</span><span class="p">(:,:,</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">dTdz_big</span><span class="p">(:,:,</span><span class="mi">2</span><span class="p">))</span><span class="w"></span>
+<span class="k">end if</span><span class="w"></span>
 
 <span class="c">! Top of domain</span>
 <span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">coord</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nproc</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
-<span class="k">    </span><span class="n">RHS_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">const</span><span class="o">*</span><span class="p">(</span><span class="n">u_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dTdx_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w">              </span><span class="p">&amp;</span>
-<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">v_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dTdy_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w">                                   </span><span class="p">&amp;</span>
-<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5_rprec</span><span class="o">*</span><span class="n">w_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dTdz_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-<span class="k">end if</span>
+<span class="k">    </span><span class="n">RHS_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">const</span><span class="o">*</span><span class="p">(</span><span class="n">u_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dTdx_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w">              </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">v_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dTdy_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w">                                   </span><span class="p">&amp;</span><span class="w"></span>
+<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="mf">0.5_rprec</span><span class="o">*</span><span class="n">w_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dTdz_big</span><span class="p">(:,:,</span><span class="n">nz</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="w"></span>
+<span class="k">end if</span><span class="w"></span>
 </pre></div>
 </div>
 <p><span style="color:red"> Is this correct? Upper BC and lower BC for temperature. What is RHS? </span></p>
-<div class="highlight-Fortran notranslate"><div class="highlight"><pre><span></span><span class="n">pi_y</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5_rprec</span><span class="o">*</span><span class="p">(</span><span class="n">Kappa_t</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Kappa_t</span><span class="p">(:,:,</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">dTdy</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-Fortran notranslate"><div class="highlight"><pre><span></span><span class="n">pi_y</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="mf">0.5_rprec</span><span class="o">*</span><span class="p">(</span><span class="n">Kappa_t</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Kappa_t</span><span class="p">(:,:,</span><span class="mi">2</span><span class="p">))</span><span class="o">*</span><span class="n">dTdy</span><span class="p">(:,:,</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p><span style="color:red"> What is pi?</span></p>
 <section id="subroutine-to-big-a-a-big">
-<h4><span class="section-number">8.2.2.4.1. </span>subroutine to_big(a, a_big)<a class="headerlink" href="#subroutine-to-big-a-a-big" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">2.2.2.4.1. </span>subroutine to_big(a, a_big)<a class="headerlink" href="#subroutine-to-big-a-a-big" title="Permalink to this heading">#</a></h4>
 <div class="highlight-Fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Set variables onto big domain for multiplication in physical space and</span>
 <span class="c">! dealiasing</span>
-<span class="n">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1._rprec</span><span class="o">/</span><span class="p">(</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">)</span>
-<span class="k">do </span><span class="n">jz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lbz</span><span class="p">,</span><span class="w"> </span><span class="n">nz</span>
-<span class="w">    </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">const</span><span class="o">*</span><span class="n">a</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">)</span>
-<span class="w">    </span><span class="k">call </span><span class="n">dfftw_execute_dft_r2c</span><span class="p">(</span><span class="n">forw</span><span class="p">,</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span>
-<span class="w">    </span><span class="k">call </span><span class="n">padd</span><span class="p">(</span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span>
-<span class="w">    </span><span class="k">call </span><span class="n">dfftw_execute_dft_c2r</span><span class="p">(</span><span class="n">back_big</span><span class="p">,</span><span class="w"> </span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span>
-<span class="k">end do</span>
+<span class="n">const</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1._rprec</span><span class="o">/</span><span class="p">(</span><span class="n">nx</span><span class="o">*</span><span class="n">ny</span><span class="p">)</span><span class="w"></span>
+<span class="k">do </span><span class="n">jz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lbz</span><span class="p">,</span><span class="w"> </span><span class="n">nz</span><span class="w"></span>
+<span class="w">    </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">const</span><span class="o">*</span><span class="n">a</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">dfftw_execute_dft_r2c</span><span class="p">(</span><span class="n">forw</span><span class="p">,</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">padd</span><span class="p">(</span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">temp_var</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="k">call </span><span class="n">dfftw_execute_dft_c2r</span><span class="p">(</span><span class="n">back_big</span><span class="p">,</span><span class="w"> </span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">),</span><span class="w"> </span><span class="n">a_big</span><span class="p">(:,:,</span><span class="n">jz</span><span class="p">))</span><span class="w"></span>
+<span class="k">end do</span><span class="w"></span>
 </pre></div>
 </div>
 <p><span class="xref myst">dfftw_execute_dft_r2c</span></p>
@@ -531,55 +574,55 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="appendices-libraries">
-<h1><span class="section-number">8.3. </span>Appendices: Libraries<a class="headerlink" href="#appendices-libraries" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">2.3. </span>Appendices: Libraries<a class="headerlink" href="#appendices-libraries" title="Permalink to this heading">#</a></h1>
 <section id="a-fftw">
-<h2><span class="section-number">8.3.1. </span>A. FFTW<a class="headerlink" href="#a-fftw" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.1. </span>A. FFTW<a class="headerlink" href="#a-fftw" title="Permalink to this heading">#</a></h2>
 <section id="a-1-reference">
-<h3><span class="section-number">8.3.1.1. </span>A.1 Reference<a class="headerlink" href="#a-1-reference" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.1.1. </span>A.1 Reference<a class="headerlink" href="#a-1-reference" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.fftw.org/fftw3_doc/index.html#SEC_Contents">FFTW TOC</a></p></li>
 </ul>
 </section>
 <section id="a-2-parameters">
-<h3><span class="section-number">8.3.1.2. </span>A.2 Parameters<a class="headerlink" href="#a-2-parameters" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.1.2. </span>A.2 Parameters<a class="headerlink" href="#a-2-parameters" title="Permalink to this heading">#</a></h3>
 <div class="highlight-Fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &lt;input_util.f90&gt;</span>
 <span class="c">! Grid size for dealiasing</span>
-<span class="n">nx2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
-<span class="n">ny2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">nx2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="n">ny2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ny</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
 
 <span class="c">! Grid size for FFT&#39;s</span>
-<span class="n">lh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
-<span class="n">ld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lh</span>
-<span class="n">lh_big</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
-<span class="n">ld_big</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lh_big</span>
+<span class="n">lh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="n">ld</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lh</span><span class="w"></span>
+<span class="n">lh_big</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="n">ld_big</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lh_big</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="a-3-functions">
-<h3><span class="section-number">8.3.1.3. </span>A.3 Functions<a class="headerlink" href="#a-3-functions" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.1.3. </span>A.3 Functions<a class="headerlink" href="#a-3-functions" title="Permalink to this heading">#</a></h3>
 <section id="dfftw-plan-dft-r2c-2d">
-<h4><span class="section-number">8.3.1.3.1. </span><a class="reference external" href="https://www.fftw.org/fftw3_doc/Fortran-Examples.html">dfftw_plan_dft_r2c_2d</a><a class="headerlink" href="#dfftw-plan-dft-r2c-2d" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">2.3.1.3.1. </span><a class="reference external" href="https://www.fftw.org/fftw3_doc/Fortran-Examples.html">dfftw_plan_dft_r2c_2d</a><a class="headerlink" href="#dfftw-plan-dft-r2c-2d" title="Permalink to this heading">#</a></h4>
 <p>– generate DFT plans.</p>
 </section>
 <section id="dfftw-execute-dft-r2c">
-<h4><span class="section-number">8.3.1.3.2. </span><a class="reference external" href="https://www.fftw.org/doc/FFTW-Execution-in-Fortran.html">dfftw_execute_dft_r2c</a><a class="headerlink" href="#dfftw-execute-dft-r2c" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">2.3.1.3.2. </span><a class="reference external" href="https://www.fftw.org/doc/FFTW-Execution-in-Fortran.html">dfftw_execute_dft_r2c</a><a class="headerlink" href="#dfftw-execute-dft-r2c" title="Permalink to this heading">#</a></h4>
 <p>– execute the DFT plan.</p>
 </section>
 </section>
 </section>
 <section id="b-openmp">
-<h2><span class="section-number">8.3.2. </span>B. OpenMP<a class="headerlink" href="#b-openmp" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">2.3.2. </span>B. OpenMP<a class="headerlink" href="#b-openmp" title="Permalink to this heading">#</a></h2>
 <p>Separate the data into different blocks vertically ( along z direction)</p>
 <div class="highlight-Fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! &lt;input_util.f90&gt;</span>
 <span class="c">! Set the processor owned vertical grid spacing</span>
-<span class="n">nz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">floor</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="w"> </span><span class="n">nz_tot</span><span class="p">,</span><span class="w"> </span><span class="n">rprec</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">nproc</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">nz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">floor</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="kt">real</span><span class="p">(</span><span class="w"> </span><span class="n">nz_tot</span><span class="p">,</span><span class="w"> </span><span class="n">rprec</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">nproc</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="b-1-reference">
-<h3><span class="section-number">8.3.2.1. </span>B.1 Reference<a class="headerlink" href="#b-1-reference" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.2.1. </span>B.1 Reference<a class="headerlink" href="#b-1-reference" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="b-2-parameters">
-<h3><span class="section-number">8.3.2.2. </span>B.2 Parameters<a class="headerlink" href="#b-2-parameters" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">2.3.2.2. </span>B.2 Parameters<a class="headerlink" href="#b-2-parameters" title="Permalink to this heading">#</a></h3>
 </section>
 </section>
 </section>
@@ -621,7 +664,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">7. </span>Setup</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Setup</p>
       </div>
     </a>
     <a class="right-next"
@@ -629,7 +672,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8.4. </span>LESGO configuration</p>
+        <p class="prev-next-title"><span class="section-number">2.4. </span>LESGO configuration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -651,42 +694,42 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">8.2. Lesgo Tutorial</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-setup">8.2.1. 1. Domain Setup</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">8.2.1.1. 1.1 Parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">8.2.1.2. 1.1 Boundary Conditions</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-conditions">8.2.1.3. Initial Conditions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">2.2. Lesgo Tutorial</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#domain-setup">2.2.1. 1. Domain Setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters">2.2.1.1. 1.1 Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">2.2.1.2. 1.1 Boundary Conditions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-conditions">2.2.1.3. Initial Conditions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-structure">8.2.2. 2. Code Structure</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-f90">8.2.2.1. 2.1 main.f90</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-f90">8.2.2.2. 2.2 fft.f90</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives-f90">8.2.2.3. 2.3 derivatives.f90</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutine-ddx-f-dfdx-lbz">8.2.2.3.1. subroutine ddx(f,dfdx,lbz)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-structure">2.2.2. 2. Code Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#main-f90">2.2.2.1. 2.1 main.f90</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fft-f90">2.2.2.2. 2.2 fft.f90</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivatives-f90">2.2.2.3. 2.3 derivatives.f90</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutine-ddx-f-dfdx-lbz">2.2.2.3.1. subroutine ddx(f,dfdx,lbz)</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-f90">8.2.2.4. 2.10 scalar.f90</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutine-to-big-a-a-big">8.2.2.4.1. subroutine to_big(a, a_big)</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#appendices-libraries">8.3. Appendices: Libraries</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-fftw">8.3.1. A. FFTW</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-reference">8.3.1.1. A.1 Reference</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-parameters">8.3.1.2. A.2 Parameters</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-3-functions">8.3.1.3. A.3 Functions</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dfftw-plan-dft-r2c-2d">8.3.1.3.1. dfftw_plan_dft_r2c_2d</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dfftw-execute-dft-r2c">8.3.1.3.2. dfftw_execute_dft_r2c</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scalar-f90">2.2.2.4. 2.10 scalar.f90</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#subroutine-to-big-a-a-big">2.2.2.4.1. subroutine to_big(a, a_big)</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-openmp">8.3.2. B. OpenMP</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1-reference">8.3.2.1. B.1 Reference</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-2-parameters">8.3.2.2. B.2 Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#appendices-libraries">2.3. Appendices: Libraries</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-fftw">2.3.1. A. FFTW</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-1-reference">2.3.1.1. A.1 Reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-2-parameters">2.3.1.2. A.2 Parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-3-functions">2.3.1.3. A.3 Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dfftw-plan-dft-r2c-2d">2.3.1.3.1. dfftw_plan_dft_r2c_2d</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dfftw-execute-dft-r2c">2.3.1.3.2. dfftw_execute_dft_r2c</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#b-openmp">2.3.2. B. OpenMP</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-1-reference">2.3.2.1. B.1 Reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-2-parameters">2.3.2.2. B.2 Parameters</a></li>
 </ul>
 </li>
 </ul>
