@@ -25,7 +25,6 @@ from matplotlib import colors, cm
 
 from datetime import datetime
 date_marker = datetime.today().strftime('%Y_%m_%d')
-
 ------------------
 
 
